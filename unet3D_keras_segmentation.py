@@ -1,5 +1,5 @@
  """ 
-    This peace of source code is part of FADCIL project from Visibilia
+    This piece of source code is part of FADCIL project from Visibilia
     More details about this project at: http://visibilia.net.br/fadcil
     Last updated: 11/17/2020
  """
