@@ -35,7 +35,7 @@ Our source code is in Python and R programming languages. Because we use several
 Running
 ========
 
-The source code developed by Visibilia up to the third (final) stage of the contest is formed by two main files:
+The source code developed by Visibilia up to the third (final) stage of the contest is formed by the following files:
 
 - ``unet3D_keras_segmentation.py`` Full code implementing segmentation algorithms for detecting lungs and COVID-19 lessions from CT scans. This code is fully implemented in Python.
 - ``yolov4-covid_classification.cfg`` Configuration file maintaining the parameter values for all the deep nets used in ``unet3D_keras_segmentation.py``.
@@ -52,4 +52,11 @@ For each input CT scan you will get:
 - A segmentation output: Segmentation results represented by a (binary) mask indicating the positions of the curve adjusted to the lessions limits. One or more lessions can be identified. COVID-19 lessions are distinguished from injuries caused by other diseases as well as tomographic findings (e.g. opacity).
 
 
+What else do you need to do
+===========================
 
+Some pieces of code are not considered in this repository and the implementation is under the responsibility of whoever will use the available code. These pieces of code are:
+
+- Input reading: necessary to read the CT scan(s) from the format in which the image to be analyzed is, e.g. DICOM, NII, NIfTI, etc.
+- Pre-processing: optionally, in case you need to do any cleaning or other task according to the problem requirements
+- Post-processing
