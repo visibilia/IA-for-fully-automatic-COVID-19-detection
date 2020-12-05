@@ -29,5 +29,6 @@ What you will find in this repository
 The source code developed by Visibilia up to the third (final) stage of the contest is formed by two main files:
 
 - ``unet3D_keras_segmentation.py`` Full code implementing segmentation algorithms for detecting lungs and COVID-19 lessions from CT scans. This code is fully implemented in Python.
-- ee
+- ``yolov4-covid_classification.cfg`` Configuration file maintaning the parameter values for all the deep nets used in ``unet3D_keras_segmentation.py``.
+- ``final-classification.R`` Full code using classification algorithms for compute the probability of presence of COVID-19. This file use as input some feaures pre-computed in ``unet3D_keras_segmentation.py``. This code is fully implemented in R.
 
