@@ -80,7 +80,7 @@ Commercial Version
 
 Complementary source code pieces were built to constitute a software product capable of meeting the real-world needs of a clinical environment. Also, rigorous training of our deep neural networks and other machine learning models was performed to improve the quality of our results. This entire package constitutes **FADCIL**, a software licensed by Visibilia and whose pilot version worked at Clinics Hospital of Sao Paulo, the largest and most reputable hospital in Latin America.
 
-The **F** ully **A** utomatic **D** etection of **C** ovid-19 cases in medical **I** mages of the **L** ung system - **FADCIL** -- in addition to the accurate classification and segmentation results, also offers: low refusal rate and above average speed in processing and delivering results (3 to 5 minutes); DICOM structured report files and statistical performance reports; easy and secure connection with PACS, DICOM servers and other platforms already used in clinical environments; running on cloud being able to respond 24 hours a day the 7 days of week.
+The **F** ully **A** utomatic **D** etection of **C** ovid-19 cases in medical **I** mages of the **L** ung system - **FADCIL** - in addition to the accurate classification and segmentation results, also offers: low refusal rate and above average speed in processing and delivering results (3 to 5 minutes); DICOM structured report files and statistical performance reports; easy and secure connection with PACS, DICOM servers and other platforms already used in clinical environments; running on cloud being able to respond 24 hours a day the 7 days of week.
 
 FADCIL is commercial available here: https://visibilia.net.br/fadcil
 
@@ -90,5 +90,11 @@ FADCIL is commercial available here: https://visibilia.net.br/fadcil
 Some demonstrations of FADCIL's visual results can be seen on our `YouTube channel`_
 
 .. _YouTube channel: https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1
+
+See FADCIL news on social media on `our blog`_
+
+.. _our blog: https://visibilia.net.br/category/fadcil/
+
+
 
 
