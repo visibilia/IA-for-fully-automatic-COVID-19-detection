@@ -32,8 +32,8 @@ Our source code is in Python and R programming languages. Because we use several
 - ``requirements-R.txt`` list of packages and other softwares, and their required versions, needed to make run our source code in R. 
 
 
-What you will find in this repository
-======================================
+Running
+========
 
 The source code developed by Visibilia up to the third (final) stage of the contest is formed by two main files:
 
@@ -42,7 +42,14 @@ The source code developed by Visibilia up to the third (final) stage of the cont
 - ``final-classification.R`` Full code using classification algorithms for compute the probability of presence of COVID-19. This file use as input some feaures pre-computed in ``unet3D_keras_segmentation.py``. This code is fully implemented in R.
 
 
+What you will get
+=================
 
--
+For each input CT scan you will get: 
+
+- A binary classification output: Prediction results labeled with **1** (is COVID-19) or **0** (is not COVID-19). In case the prediction result is COVID-19, the probability value between 0 and 1 will be indicated. It is important to note that cases not being COVID-19 does not imply that the patient is totally healthy, as he may still have some other lung disease.
+
+- A segmentation output: 
+
 
 
