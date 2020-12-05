@@ -69,3 +69,16 @@ Caution
 The results obtained by the source code provided here should not be used in a clinical environment.
 
 
+Updates
+=======
+
+Visibilia does not undertake to carry out updates to the source code available in this repository.
+
+
+Commercial Version
+==================
+
+Complementary source code pieces were built to constitute a software product capable of meeting the real-world needs of a clinical environment. This entire package constitutes FADCIL, software licensed by Visibilia.
+
+
+
