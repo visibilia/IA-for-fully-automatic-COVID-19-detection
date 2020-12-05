@@ -58,5 +58,14 @@ What else do you need to do
 Some pieces of code are not considered in this repository and the implementation is under the responsibility of whoever will use the available code. These pieces of code are:
 
 - Input reading: necessary to read the CT scan(s) from the format in which the image to be analyzed is, e.g. DICOM, NII, NIfTI, etc.
-- Pre-processing: optionally, in case you need to do any cleaning or other task according to the problem requirements
-- Post-processing
+- Pre-processing: optionally, in case you need to do any cleaning or other task according to the problem requirements.
+- Post-processing: optionally, in case you need to adjust the results to some format or specification.
+- Visualization: optionally, in case you need to graphically view the results.
+
+
+Caution
+========
+
+The results obtained by the source code provided here should not be used in a clinical environment.
+
+
