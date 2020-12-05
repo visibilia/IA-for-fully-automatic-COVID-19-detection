@@ -49,7 +49,7 @@ For each input CT scan you will get:
 
 - A binary classification output: Prediction results labeled with **1** (is COVID-19) or **0** (is not COVID-19). In case the prediction result is COVID-19, the probability value between 0 and 1 will be indicated. It is important to note that cases not being COVID-19 does not imply that the patient is totally healthy, as he may still have some other lung disease.
 
-- A segmentation output: 
+- A segmentation output: Segmentation results represented by a (binary) mask indicating the positions of the curve adjusted to the lessions limits. One or more lessions can be identified. COVID-19 lessions are distinguished from injuries caused by other diseases as well as tomographic findings (e.g. opacity).
 
 
 
