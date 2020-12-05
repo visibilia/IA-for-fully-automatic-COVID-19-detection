@@ -81,4 +81,7 @@ Commercial Version
 Complementary source code pieces were built to constitute a software product capable of meeting the real-world needs of a clinical environment. Also, rigorous training of our deep neural networks and other machine learning models was performed to improve the quality of our results. This entire package constitutes FADCIL, software licensed by Visibilia and whose pilot version worked at Clinics Hospital of Sao Paulo, the largest and most reputable hospital in Latin America.
 
 
+.. image:: https://visibilia.net.br/wp-content/uploads/2020/11/fadcil-lung-covid19-visibilia-winner.png
+   :width: 600
+
 
