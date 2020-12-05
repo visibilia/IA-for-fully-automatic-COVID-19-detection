@@ -87,4 +87,4 @@ FADCIL is commercial available here: https://visibilia.net.br/fadcil
 .. image:: https://visibilia.net.br/wp-content/uploads/2020/11/fadcil-lung-covid19-visibilia-winner.png
    :width: 600
 
-
+Some demonstrations of FADCIL's visual results can be seen on our YouTube channel: https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1
