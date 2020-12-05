@@ -91,7 +91,7 @@ Some demonstrations of FADCIL's visual results can be seen on our `YouTube chann
 
 .. _YouTube channel: https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1
 
-See FADCIL news on social media on `our blog`_
+See FADCIL news on social media on `our blog`_.
 
 .. _our blog: https://visibilia.net.br/category/fadcil/
 
