@@ -28,6 +28,6 @@ What you will find in this repository
 
 The source code developed by Visibilia up to the third (final) stage of the contest is formed by two main files:
 
-- ddd
+- ``unet3D_keras_segmentation.py`` Full code implementing segmentation algorithms for detecting lungs and COVID-19 lessions from CT scans. This code is fully implemented in Python.
 - ee
 
