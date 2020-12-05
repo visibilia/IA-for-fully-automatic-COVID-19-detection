@@ -11,7 +11,7 @@ Awarded
 ========
 Visibilia participated in the challenge launched by the the Sao Paulo State Government through the public call nº 03/2020: "*Como o uso de algoritmos de Inteligência Artificial pode auxiliar médicos radiologistas no diagnóstico do COVID-19 através de imagem de tomografia computadorizada e raios-X de tórax?*" and organized by the innovation hub `IdeiaGov`_ . After weeks of hard work, Visibilia was chosen as winner of this challenge.
 
-.. _IdeiaGov: https://ideiagov.sp.gov.br/
+.. _IdeiaGov: https://ideiagov.sp.gov.br/desafios/diagnostico-atraves-de-imagens-de-tomografia-computadorizada-e-raio-x-de-torax/
 
 Visibilia's selection in the aforementioned competition had been officially approved by the Official Press of the Sao Paulo State Government, according to a `publication on August 15, 2020`_.
 
