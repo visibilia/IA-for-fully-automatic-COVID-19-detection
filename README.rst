@@ -23,6 +23,15 @@ Commitment
 In compliance with the commitment assumed by Visibilia during its participation in the aforementioned contest, this repository is made available under the MIT license. It is important to note that the code available in this repository corresponds to the code developed by Visibilia up to the third (final) stage of the contest.
 
 
+Getting Started
+================
+
+Our source code is in Python and R programming languages. Because we use several data and image processing, machine learning and deep learning algorithms, you will need install an appropriate programming enviromment. Therefore, the packages needed for make out code work are specified in the following files:
+
+- ``requirements.txt`` list of Python packages and their required versions.
+- ``requirements-R.txt`` list of packages and other softwares, and their required versions, needed to make run our source code in R. 
+
+
 What you will find in this repository
 ======================================
 
@@ -33,12 +42,7 @@ The source code developed by Visibilia up to the third (final) stage of the cont
 - ``final-classification.R`` Full code using classification algorithms for compute the probability of presence of COVID-19. This file use as input some feaures pre-computed in ``unet3D_keras_segmentation.py``. This code is fully implemented in R.
 
 
-What you need to use this source code
-======================================
 
-Our source code is in Python and R programming languages. You will find the packages needed for make the code work in the following files:
-
-- ``requirements.txt`` list of python packages and their required versions 
 -
 
 
