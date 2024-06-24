@@ -1,4 +1,4 @@
-IA for fully automatic COVID-19 detection
+# FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lung
 ==========================================
 Copyright (C) 2020 `Visibilia`_
 
