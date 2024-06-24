@@ -5,11 +5,13 @@ FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lun
    :align: center
 
 
-Copyright (C) 2020 `Visibilia`_
+Copyright (C) 2020-2024 `Visibilia`_
 
 .. _Visibilia: https://visibilia.net.br 
 
-Welcome to the repository for **FADCIL**, a state-of-the-art deep learning framework designed for the automatic detection of COVID-19 from chest CT scans. This repository contains (part of) the code and resources associated with our paper, **"Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans"**, published at the IEEE 37th International Symposium on Computer Based Medical Systems (CBMS) 2024 <https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5u8X000000Igo9QAC#/Inicio>_. as well as part of the commitment assumed by Visibilia during its participation in the Challenge nº 03/2020 launched by the Sao Paulo State Government.
+Welcome to the repository for **FADCIL**, a state-of-the-art deep learning framework designed for the automatic detection of COVID-19 from chest CT scans. This repository contains (part of) the code and resources associated with our paper, **"Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans"**, published at the IEEE 37th International Symposium on Computer Based Medical Systems `CBMS 2024`_ , as well as part of the commitment assumed by Visibilia during its participation in the Challenge nº 03/2020 launched by the Sao Paulo State Government.
+
+.. _CBMS 2024: https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5u8X000000Igo9QAC#/Inicio
 
 This repository shows the source code of the algorithms for automatic detection of the presence of COVID-19 in medical images of computed tomography (CT) scans of the lung with high precision. This system identifies the areas of the lung with lesions caused by the disease with high precision, quantifying them in relation to the total lung parenchyma. Moreover, this system aproperly distinguishes lessions caused by COVID-19 from such caused by other diseases.
 
