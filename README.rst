@@ -1,5 +1,8 @@
-# FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lung
+FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lung
 ==========================================
+![FADCIL Logo](./images/fadcil_logo.png) 
+
+
 Copyright (C) 2020 `Visibilia`_
 
 .. _Visibilia: https://visibilia.net.br 
