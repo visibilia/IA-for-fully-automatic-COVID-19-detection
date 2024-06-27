@@ -3,7 +3,7 @@ FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lun
 .. image:: ./images/fadcil_logo.png
    :alt: FADCIL official Logo. A product of Visibilia Ltda
    :align: center
-   :width: 350px
+   :width: 380px
    :height: 220px
 
 
@@ -15,7 +15,8 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 
 1. `Summary <#summary>`_
 2. `Introduction <#introduction>`_
-3. `System Overview <#system-overview>`_ 
+3. `System Overview <#system-overview>`_ \
+3.1. `Preprocessing <#preprocessing>`_
 4. `Performance Analysis <#performance-analysis>`_
 5. `Running the Code <#running-the-code>`_
 6. `Awards <#awards>`_
