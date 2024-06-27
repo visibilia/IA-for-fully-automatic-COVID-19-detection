@@ -14,7 +14,7 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 1. `Summary <#summary>`_
 2. `Introduction <#introduction>`_
 3. `System Overview <#system-overview>`_ 
-4. `Deep Learning Networks Training <#deep-learning-networks-training >`_
+4. `Deep Learning Networks Training <#deep-learning-networks-training>`_
 5. `Running the Code <#running-the-code>`_
 6. `Awards <#awards>`_
 7. `Videos <#videos>`_
