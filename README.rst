@@ -289,4 +289,4 @@ If you use FADCIL in your research, please cite our paper:
 .. _HCFMUSP: https://www.hc.fm.usp.br/hc/portal/
 .. _DarkNet: https://github.com/AlexeyAB/darknet
 .. _InRad: https://inrad.hc.fm.usp.br/
-.. _InovaHC: https://inovahc.hc.fm.usp.br/
+.. _Inova HC: https://inovahc.hc.fm.usp.br/
