@@ -42,20 +42,20 @@ System Overview
 FADCIL is structured into four main modules:
 
 
-### Preprocessing Module
+**Preprocessing Module**
 
 - **Format Conversion**: Converts CT scans to NIfTI format and resamples them to a uniform resolution.
 - **Resolution Adjustment**: Processes scans at both low and medium resolutions to prepare them for model inference.
 
-### Prediction Module
+**Prediction Module**
 - **YOLOv4**: Utilized to detect lesions in axial, coronal, and sagittal planes of CT scans. Trained using transfer learning on the RSNA Pneumonia dataset and fine-tuned for COVID-19 detection.
 - **3D U-Net**: Used to segment lung lesions at low and medium resolutions, focusing on COVID-19 specific features.
 
-### User Interface Module
+**User Interface Module**
 
 - **Integration**: FADCIL integrates seamlessly with PACS and other CT visualization systems via its API. It saves segmentation results in new scans and stores classification and meta-information in structured report (SR) files.
 
-### Feedback Module
+**Feedback Module**
 
 - **Expert Input**: Captures feedback from radiologists to refine and retrain the model, improving its accuracy over time.
 
