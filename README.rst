@@ -21,7 +21,8 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 8. `Media Appearances <#media-appearances>`_
 9. `Caution <#caution>`_
 10. `Commercial Version <#commercial-version>`_
-11. `Citation <#citation>`_
+11. `Acknowledgment <#acknowledgment>`_
+12. `Citation <#citation>`_
 
 
 Summary
@@ -261,6 +262,12 @@ Visibilia offers a commercial version of FADCIL, enhanced for clinical use. The 
 
 
 
+Acknowledgment
+===============
+
+We thank the following institutions: `HCFMUSP`_, `InRad`_, `Inova HC`_, IPT, Grupo Tellus, IdeiaGov, Secretaria de Desenvolvimento Econômico do Estado de São Paulo (SDE), AWS, Fondo de Apoyo a Publicaciones (FAP) from Tecnologico de Monterrey, and Inter-American Development Bank (IDB).
+
+
 
 Citation
 =========
@@ -281,3 +288,5 @@ If you use FADCIL in your research, please cite our paper:
 .. _Visibilia: https://visibilia.net.br 
 .. _HCFMUSP: https://www.hc.fm.usp.br/hc/portal/
 .. _DarkNet: https://github.com/AlexeyAB/darknet
+.. _InRad: https://inrad.hc.fm.usp.br/
+.. _InovaHC: https://inovahc.hc.fm.usp.br/
