@@ -80,7 +80,23 @@ This module combines YOLOv4 and 3D U-Net models to improve the accuracy of COVID
 
 
 .. figure:: ./images/yolo-3dunet-integration-fadcil-3.PNG
-   :alt: YOLOv4 and 3D U-net integration at FADCIL: 3D U0net processing CT scans at low resolution as part of FADCIL prediction module
+   :alt: YOLOv4 and 3D U-net integration at FADCIL: 3D U-net processing CT scans at low resolution as part of FADCIL prediction module
+   :align: center
+
+
+YOLO version 4 (YOLOv4) processes CT scans at medium resolution, focusing on work on identify the presence of the virus in small lesions or confirm the absence when there are no injuries. It is shown in the following figure.
+
+
+.. figure:: ./images/yolo-3dunet-integration-fadcil-4.PNG
+   :alt: YOLOv4 and 3D U-net integration at FADCIL: YOLOv4 processing CT scans at medium resolution as part of FADCIL prediction module
+   :align: center
+
+
+COVID-19 diagnosis is only confirmed if 3D U-Net identifies large characteristic lesions of the disease. However, in cases where lesions are minimal or absent, the diagnosis of COVID-19 relies on consensus, meaning confirmation occurs only when both 3D U-Net and YOLOv4 are in agreement as shown in the final fiagram of YOLO and 3D U-Net integration at FADCIL prediction module shown in the following figure.
+
+
+.. figure:: ./images/yolo-3dunet-integration-fadcil-visibilia.PNG
+   :alt: YOLOv4 and 3D U-net integration at FADCIL: YOLOv4 processing CT scans at medium resolution as part of FADCIL prediction module
    :align: center
 
 
