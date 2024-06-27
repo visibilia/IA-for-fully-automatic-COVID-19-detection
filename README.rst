@@ -137,7 +137,7 @@ We note that all YOLOv4 networks can readily distinguish the lungs, as most slic
 - YOLOv4-3D weighted: formed by assigning 0.4, 0.22, and 0.38, as weights for YOLOv4-Axial, YOLOv4-Coronal, and YOLOv4-Sagittal networks, respectively;
 - YOLOv4-3D averaged: formed by assigning equal weights to the three networks.
 
-The two YOLOv4-3D networks allow the identification of lung regions where 2 or all 3 YOLOv4 networks agree on the outcome. This approach is highly effective in filtering out false positives due to the consensus of at least two YOLO networks. More details in our published paper.
+The two YOLOv4-3D networks allow the identification of lung regions where 2 or all 3 YOLOv4 networks agree on the outcome. This approach is highly effective in filtering out false positives due to the consensus of at least two YOLO networks. More details in our published paper (see here `publication`_).
 
 
 
