@@ -96,17 +96,25 @@ COVID-19 diagnosis is only confirmed if 3D U-Net identifies large characteristic
 
 
 .. figure:: ./images/yolo-3dunet-integration-fadcil-visibilia.PNG
-   :alt: YOLOv4 and 3D U-net integration at FADCIL: YOLOv4 processing CT scans at medium resolution as part of FADCIL prediction module
+   :alt: YOLOv4 and 3D U-net integration at FADCIL: YOLOv4 and 3D U-Net integration at FADCIL prediction module
    :align: center
 
 
 **User Interface Module**
 
-- **Integration**: FADCIL integrates seamlessly with PACS and other CT visualization systems via its API. It saves segmentation results in new scans and stores classification and meta-information in structured report (SR) files.
+
+FADCIL does not have its own user interface (UI) but enables integration with PACS (Picture Archiving and Communication System) or other CT scan visualization systems via the FADCIL API. Thus, segmentation results are saved in new scans, while classification and meta-information are stored in structured report (SR) files.
+
+
+
 
 **Feedback Module**
 
-- **Expert Input**: Captures feedback from radiologists to refine and retrain the model, improving its accuracy over time.
+Captures feedback from radiologists to refine and retrain the model, improving its accuracy over time. This is an optional module.
+
+
+
+
 
 
 Performance Analysis
