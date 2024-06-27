@@ -20,7 +20,7 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 7. `Videos <#videos>`_
 8. `Media Appearances <#media-appearances>`_
 9. `Caution <#caution>`_
-10.`Publication <#publication>`_
+10. `Publication <#publication>`_
 11. `Commercial Version <#commercial-version>`_
 12. `Acknowledgment <#acknowledgment>`_
 13. `Citation <#citation>`_
