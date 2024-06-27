@@ -222,14 +222,14 @@ FADCIL was developed as part of the `Challenge nº 03/2020 <https://ideiagov.sp.
 Videos
 ========
 
-Watch FADCIL in action on our YouTube channel:
+Watch FADCIL related video here:
 
 - `Overview of FADCIL <https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1>`_
-- `Demonstration Video 1 <https://www.youtube.com/watch?v=example_video_1>`_
-- `Demonstration Video 2 <https://www.youtube.com/watch?v=example_video_2>`_
+- `Paper presentation at CBMS 2024 by Dr. Jorge Valverde-Rebaza <
+https://event.fourwaves.com/cbms2024/abstracts/a7c37654-93f1-439b-a5de-77e8f47ba45b>`_
 
-.. image:: https://img.youtube.com/vi/5MC5czxMdQM/0.jpg
-   :target: https://www.youtube.com/watch?v=5MC5czxMdQM
+
+
 
 
 
