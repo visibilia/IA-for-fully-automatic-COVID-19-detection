@@ -276,7 +276,7 @@ If you use FADCIL in your research, please cite our paper:
 
 .. code-block:: bibtex
 
-    @inproceedings{valverde2024integrating,
+    @inproceedings{valverde:fadcil:cbms24,
       title={Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans},
       author={Valverde-Rebaza, Jorge and Andreis, Guilherme R and Shiguihara, Pedro and Paucar, Sebastián and Mano, Leandro Y and Góes, Fabiana and Noguez, Julieta and Da Silva, Nathalia C},
       booktitle={Proceedings of the IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS)},
