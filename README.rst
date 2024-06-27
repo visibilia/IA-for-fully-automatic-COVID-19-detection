@@ -27,7 +27,8 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 Summary
 =========
 
-The Coronavirus disease 2019 (COVID-19) pandemic has presented unprecedented challenges to global healthcare systems, urgently calling for innovative diagnostic solutions. This repository introduces the source code and other supplementary materials of **FADCIL** system, a cutting-edge deep learning framework designed for rapid and accurate COVID-19 diagnosis from chest computed tomography (CT) images. By leveraging an architecture based on **YOLO** and **3D U-Net**, FADCIL excels in identifying and quantifying lung injuries attributable to COVID-19, distinguishing them from other pathologies. In the real-world clinical environment of The Hospital das Clínicas de São Paulo (`HCFMUSP`_), Brazil, FADCIL achieved a DICE coefficient above 0.82. FADCIL also enhances the reliability of COVID-19 assessment, empowering healthcare professionals to make informed decisions and effectively manage patient care. Thus, this paper outlines the FADCIL architecture and presents an in-depth analysis of quantitative and qualitative evaluation results derived from a novel dataset comprising over 1000 CT scans. Furthermore, we provide access to the FADCIL's source code for public use.
+The Coronavirus disease 2019 (COVID-19) pandemic has presented unprecedented challenges to global healthcare systems, urgently calling for innovative diagnostic solutions. This repository introduces the source code and other supplementary materials of **FADCIL** system, a cutting-edge deep learning framework designed for rapid and accurate COVID-19 diagnosis from chest computed tomography (CT) images. By leveraging an architecture based on **YOLO** and **3D U-Net**, FADCIL excels in identifying and quantifying lung injuries attributable to COVID-19, distinguishing them from other pathologies. In the real-world clinical environment of The Hospital das Clínicas de São Paulo (`HCFMUSP`_), Brazil, FADCIL achieved a DICE coefficient above 0.82. FADCIL also enhances the reliability of COVID-19 assessment, empowering healthcare professionals to make informed decisions and effectively manage patient care. Thus, this repository outlines the FADCIL source code, materials and presents an in-depth analysis of quantitative and qualitative evaluation results.
+
 
 
 Introduction
@@ -38,9 +39,18 @@ At the beginning of the pandemic in Brazil, in April 2020, the São Paulo govern
 
 To ensure efficient cloud functioning, FADCIL uses a processing queue system and GPUs to minimize bottlenecks during real-time CT scan processing. Its exceptional performance and support to HCFMUSP’s medical teams during the pandemic gained significant attention and became the subject of an international case study.
 
+
+
+
 System Overview
 ===============
-FADCIL is structured into four main modules:
+FADCIL is structured into four main modules:  Preprocessing, Prediction, User Interface, and Feedback. The integration of these modules is illustrated in the following figure.
+
+.. figure:: ./images/fadcil_logo.png
+   :alt: FADCIL official Logo. A product of Visibilia Ltda
+   :align: center
+   :width: 380px
+   :height: 220px
 
 
 **Preprocessing Module**
