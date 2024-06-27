@@ -29,7 +29,7 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 Summary
 =========
 
-The Coronavirus disease 2019 (COVID-19) pandemic has presented unprecedented challenges to global healthcare systems, urgently calling for innovative diagnostic solutions. This repository introduces the source code and other supplementary materials of FADCIL system, a cutting-edge deep learning framework designed for rapid and accurate COVID-19 diagnosis from chest computed tomography (CT) images. By leveraging an architecture based on **YOLO** and **3D U-Net**, FADCIL excels in identifying and quantifying lung injuries attributable to COVID-19, distinguishing them from other pathologies. In the real-world clinical environment of The Hospital de las Clínicas de São Paulo (`HCFMUSP`_), FADCIL achieved a DICE coefficient above 0.82. FADCIL also enhances the reliability of COVID-19 assessment, empowering healthcare professionals to make informed decisions and effectively manage patient care. Thus, this paper outlines the FADCIL architecture and presents an in-depth analysis of quantitative and qualitative evaluation results derived from a novel dataset comprising over 1000 CT scans. Furthermore, we provide access to the FADCIL's source code for public use.
+The Coronavirus disease 2019 (COVID-19) pandemic has presented unprecedented challenges to global healthcare systems, urgently calling for innovative diagnostic solutions. This repository introduces the source code and other supplementary materials of FADCIL system, a cutting-edge deep learning framework designed for rapid and accurate COVID-19 diagnosis from chest computed tomography (CT) images. By leveraging an architecture based on **YOLO** and **3D U-Net**, FADCIL excels in identifying and quantifying lung injuries attributable to COVID-19, distinguishing them from other pathologies. In the real-world clinical environment of The Hospital das Clínicas de São Paulo (`HCFMUSP`_), Brazil, FADCIL achieved a DICE coefficient above 0.82. FADCIL also enhances the reliability of COVID-19 assessment, empowering healthcare professionals to make informed decisions and effectively manage patient care. Thus, this paper outlines the FADCIL architecture and presents an in-depth analysis of quantitative and qualitative evaluation results derived from a novel dataset comprising over 1000 CT scans. Furthermore, we provide access to the FADCIL's source code for public use.
 
 .. _HCFMUSP: https://www.hc.fm.usp.br/hc/portal/
 
@@ -42,23 +42,27 @@ System Overview
 FADCIL is structured into four main modules:
 
 
-Preprocessing
-=============
+Preprocessing Module
+====================
 
 - **Format Conversion**: Converts CT scans to NIfTI format and resamples them to a uniform resolution.
 - **Resolution Adjustment**: Processes scans at both low and medium resolutions to prepare them for model inference.
 
-### Prediction
+Prediction Module
+=================
 - **YOLOv4**: Utilized to detect lesions in axial, coronal, and sagittal planes of CT scans. Trained using transfer learning on the RSNA Pneumonia dataset and fine-tuned for COVID-19 detection.
 - **3D U-Net**: Used to segment lung lesions at low and medium resolutions, focusing on COVID-19 specific features.
 
-### User Interface
+User Interface Module
+====================
 - **Integration**: FADCIL integrates seamlessly with PACS and other CT visualization systems via its API. It saves segmentation results in new scans and stores classification and meta-information in structured report (SR) files.
 
-### Feedback
+Feedback Module
+===============
 - **Expert Input**: Captures feedback from radiologists to refine and retrain the model, improving its accuracy over time.
 
-## Performance Analysis
+Performance Analysis
+====================
 
 FADCIL has been rigorously tested in real clinical environments, processing over 1,000 CT scans from HCFMUSP. It demonstrated outstanding performance, assisting medical teams in diagnosing COVID-19 efficiently.
 
@@ -82,7 +86,8 @@ FADCIL has been rigorously tested in real clinical environments, processing over
    :width: 600px
    :height: 400px
 
-## Running the Code
+Running the Code
+=================
 
 To run the FADCIL code, you need to set up the appropriate programming environment. The source code is written in Python and R, and the necessary dependencies are listed in the following files:
 
@@ -118,11 +123,21 @@ To run the FADCIL code, you need to set up the appropriate programming environme
 - **Post-processing**: Optionally, adjust the results to match specific formats or specifications.
 - **Visualization**: Optionally, add code to visualize the results graphically.
 
-## Awards
+
+
+
+
+
+Awards
+========
 
 FADCIL was developed as part of the `Challenge nº 03/2020 <https://ideiagov.sp.gov.br/desafios/diagnostico-atraves-de-imagens-de-tomografia-computadorizada-e-raio-x-de-torax/>`_ launched by the São Paulo State Government, aimed at finding AI solutions to assist radiologists in diagnosing COVID-19 from CT and X-ray images. After rigorous evaluation, **Visibilia** was selected as the winner of this challenge. This recognition was officially published in the `Official Press of the Sao Paulo State Government <https://www.imprensaoficial.com.br/DO/BuscaDO2001Documento_11_4.aspx?link=%2f2020%2fexecutivo%2520secao%2520i%2fagosto%2f15%2fpag_0028_0f4ec73d9ce98efebbb9ba398e36dc0e.pdf&pagina=28&data=15/08/2020&caderno=Executivo%20I&paginaordenacao=100028>`_ on August 15, 2020.
 
-## Videos
+
+
+
+Videos
+========
 
 Watch FADCIL in action on our YouTube channel:
 
@@ -133,7 +148,11 @@ Watch FADCIL in action on our YouTube channel:
 .. image:: https://img.youtube.com/vi/5MC5czxMdQM/0.jpg
    :target: https://www.youtube.com/watch?v=5MC5czxMdQM
 
-## Media Appearances
+
+
+
+Media Appearances
+==================
 
 FADCIL has been featured in various media outlets and publications:
 
@@ -141,12 +160,15 @@ FADCIL has been featured in various media outlets and publications:
 - `Interview with Visibilia on the Development of FADCIL <https://www.example.com/interview>`_
 - `Feature Article in Local News <https://www.example.com/news-article>`_
 
-## Caution
+Caution
+=========
 
 The results generated by FADCIL should not be used directly in clinical settings without appropriate validation and approval by medical professionals.
 
-## Commercial Version
 
+
+Commercial Version
+==================
 Visibilia offers a commercial version of FADCIL, enhanced for clinical use. The commercial version includes additional features such as low refusal rate, high-speed processing, DICOM structured report files, and secure integration with existing clinical platforms.
 
 - For more information, visit our `FADCIL product page <https://visibilia.net.br/fadcil>`_.
@@ -155,7 +177,12 @@ Visibilia offers a commercial version of FADCIL, enhanced for clinical use. The 
    :width: 600px
    :align: center
 
-## Citation
+
+
+
+
+Citation
+=========
 
 If you use FADCIL in your research, please cite our paper:
 
