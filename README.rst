@@ -239,8 +239,11 @@ Media Appearances
 FADCIL has been featured in various media outlets and publications:
 
 - `Visibilia Blog - FADCIL Overview <https://visibilia.net.br/category/fadcil/>`_
-- `Interview with Visibilia on the Development of FADCIL <https://www.example.com/interview>`_
-- `Feature Article in Local News <https://www.example.com/news-article>`_
+
+
+
+
+
 
 Caution
 =========
