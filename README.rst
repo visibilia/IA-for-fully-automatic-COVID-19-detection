@@ -14,7 +14,7 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 1. `Summary <#summary>`_
 2. `Introduction <#introduction>`_
 3. `System Overview <#system-overview>`_ 
-4. `Deep Learning Networks Training <#deep=learning-networks-training >`_
+4. `Deep Learning Networks Training <#deep-learning-networks-training >`_
 5. `Running the Code <#running-the-code>`_
 6. `Awards <#awards>`_
 7. `Videos <#videos>`_
@@ -120,7 +120,7 @@ Captures feedback from radiologists to refine and retrain the model, improving i
 Deep Learning Networks Training 
 ==================================
 
-** YOLO configuration for processing 3D images**
+**YOLO configuration for processing 3D images**
 
 YOLO is adapted to process CT scans by treating the 3D image as a stack of multiple 2D slices. Thus, we employ three separate YOLOv4 networks, each dedicated to a specific plane of the human body: axial, coronal, and sagittal. This approach allows each YOLOv4 network to independently detect 2D bounding boxes, ensuring comprehensive coverage across different anatomical planes. The resulting bounding boxes are then consolidated through a process of region overlap, yielding unified 3D regions that identify COVID-19-related abnormalities.
 
