@@ -265,7 +265,7 @@ Visibilia offers a commercial version of FADCIL, enhanced for clinical use. The 
 Acknowledgment
 ===============
 
-We thank the following institutions: `HCFMUSP`_, `InRad`_, `Inova HC`_, IPT, Grupo Tellus, IdeiaGov, Secretaria de Desenvolvimento Econômico do Estado de São Paulo (SDE), AWS, Fondo de Apoyo a Publicaciones (FAP) from Tecnologico de Monterrey, and Inter-American Development Bank (IDB).
+We thank the following institutions: `HCFMUSP`_, `InRad`_, `Inova HC`_, Intituto de Pesquisas Tecnológicas (`IPT`_), `Instituto Tellus`_, `IdeiaGov`_, Secretaria de Desenvolvimento Econômico do Estado de São Paulo (`SDE`_), AWS, Fondo de Apoyo a Publicaciones (FAP) from Tecnologico de Monterrey, and Inter-American Development Bank (IDB).
 
 
 
@@ -290,3 +290,7 @@ If you use FADCIL in your research, please cite our paper:
 .. _DarkNet: https://github.com/AlexeyAB/darknet
 .. _InRad: https://inrad.hc.fm.usp.br/
 .. _Inova HC: https://inovahc.hc.fm.usp.br/
+.. _IPT: https://ipt.br/
+.. _Instituto Tellus: https://tellus.org.br/
+.. _IdeiaGov: https://www.saopaulo.sp.gov.br/tag/ideiagov/
+.. _SDE: https://www.desenvolvimentoeconomico.sp.gov.br/
