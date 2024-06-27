@@ -3,8 +3,8 @@ FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lun
 .. image:: ./images/fadcil_logo.png
    :alt: FADCIL official Logo. A product of Visibilia Ltda
    :align: center
-   :width: 450px
-   :height: 300px
+   :width: 350px
+   :height: 220px
 
 
 Copyright (C) 2020-2024 `Visibilia`_
@@ -13,8 +13,7 @@ Copyright (C) 2020-2024 `Visibilia`_
 
 
 
-
-Welcome to the repository for **FADCIL**, a cutting-edge deep learning framework designed for the automatic detection of COVID-19 from chest CT scans. This repository provides the source code for FADCIL, which identifies and quantifies lung lesions caused by COVID-19 with high precision, differentiating them from other pulmonary diseases.
+**FADCIL** (Fully Automatic Detection of Covid-19 cases in medical Images of the Lung) is an advanced deep learning framework designed to assist in the automatic detection of COVID-19 from chest CT scans. By integrating state-of-the-art architectures like **YOLOv4** and **3D U-Net**, FADCIL excels in accurately identifying and quantifying lung lesions caused by COVID-19, distinguishing them from other pulmonary diseases.
 
 ## Contents
 
