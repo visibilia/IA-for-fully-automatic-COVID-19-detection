@@ -56,9 +56,22 @@ FADCIL operates on the coronal, sagittal, and axial planes of patient data obtai
 
 **Preprocessing Module**
 
-This module directly handles CT scans,  preparing them for inference using deep learning models.  To accommodate potential format variations in the voxel spacing of CT scans, this module begins by compressing all inputs to the NIfTI format. Then, scans and reference masks are resampled to 0.75 x 0.75 x 0.8 mm resolution using cubic and nearest neighbor interpolation, respectively. From this uniform resolution, two new images are resampled: low resolution images with $3.0 x 3.0 x 3.2 mm and medium resolution images with 1.5 x 1.5 x 1.6 mm.
+This module directly handles CT scans,  preparing them for inference using deep learning models.  To accommodate potential format variations in the voxel spacing of CT scans, this module begins by compressing all inputs to the NIfTI format. Then, scans and reference masks are resampled to 0.75 x 0.75 x 0.8 mm resolution using cubic and nearest neighbor interpolation, respectively. This process is shown in the following figure.
+
+.. figure:: ./images/yolo-3dunet-integration-fadcil-1.png
+   :alt: YOLOv4 and 3D U-net integration at FADCIL: resampling at uniform resolution
+   :align: center
+
+\\
 
 
+From the uniform resolution, two new images are resampled: low resolution images with $3.0 x 3.0 x 3.2 mm and medium resolution images with 1.5 x 1.5 x 1.6 mmas 
+
+.. figure:: ./images/yolo-3dunet-integration-fadcil-2.png
+   :alt: YOLOv4 and 3D U-net integration at FADCIL: resampling from the uniform resolution to low and medium resolution.
+   :align: center
+
+\\
 
 
 **Prediction Module**
