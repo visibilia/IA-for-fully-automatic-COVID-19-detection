@@ -286,9 +286,11 @@ If you use FADCIL in your research, please cite our paper:
     @inproceedings{valverde:fadcil:cbms24,
       title={Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans},
       author={Valverde-Rebaza, Jorge and Andreis, Guilherme R and Shiguihara, Pedro and Paucar, Sebastián and Mano, Leandro Y and Góes, Fabiana and Noguez, Julieta and Da Silva, Nathalia C},
-      booktitle={Proceedings of the IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS)},
+      booktitle={Proceedings of the IEEE 37th International Symposium on Computer-Based Medical Systems},
+      series = {CBMS 2024},
+      pages = {15--20},
       year={2024},
-      organization={IEEE}
+      publisher={IEEE}
     }
 
 
