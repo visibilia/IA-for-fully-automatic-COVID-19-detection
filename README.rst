@@ -9,8 +9,6 @@ FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lun
 
 Copyright (C) 2020-2024 `Visibilia`_
 
-.. _Visibilia: https://visibilia.net.br 
-
 Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 cases in medical Images of the Lung), a cutting-edge deep learning framework designed for the automatic detection of COVID-19 from chest CT scans. By integrating state-of-the-art architectures like **YOLOv4** and **3D U-Net**, FADCIL excels in accurately identifying and quantifying lung lesions caused by COVID-19, distinguishing them from other pulmonary diseases. This repository provides the source code and other materials for FADCIL as follows:
 
 1. `Summary <#summary>`_
@@ -31,7 +29,6 @@ Summary
 
 The Coronavirus disease 2019 (COVID-19) pandemic has presented unprecedented challenges to global healthcare systems, urgently calling for innovative diagnostic solutions. This repository introduces the source code and other supplementary materials of FADCIL system, a cutting-edge deep learning framework designed for rapid and accurate COVID-19 diagnosis from chest computed tomography (CT) images. By leveraging an architecture based on **YOLO** and **3D U-Net**, FADCIL excels in identifying and quantifying lung injuries attributable to COVID-19, distinguishing them from other pathologies. In the real-world clinical environment of The Hospital das Clínicas de São Paulo (`HCFMUSP`_), Brazil, FADCIL achieved a DICE coefficient above 0.82. FADCIL also enhances the reliability of COVID-19 assessment, empowering healthcare professionals to make informed decisions and effectively manage patient care. Thus, this paper outlines the FADCIL architecture and presents an in-depth analysis of quantitative and qualitative evaluation results derived from a novel dataset comprising over 1000 CT scans. Furthermore, we provide access to the FADCIL's source code for public use.
 
-.. _HCFMUSP: https://www.hc.fm.usp.br/hc/portal/
 
 Introduction
 ============
@@ -194,3 +191,7 @@ If you use FADCIL in your research, please cite our paper:
       year={2024},
       organization={IEEE}
     }
+
+
+.. _Visibilia: https://visibilia.net.br 
+.. _HCFMUSP: https://www.hc.fm.usp.br/hc/portal/
