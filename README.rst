@@ -44,13 +44,12 @@ To ensure efficient cloud functioning, FADCIL uses a processing queue system and
 
 System Overview
 ===============
-FADCIL is structured into four main modules:  Preprocessing, Prediction, User Interface, and Feedback. The integration of these modules is illustrated in the following figure.
 
-.. figure:: ./images/fadcil_logo.png
-   :alt: FADCIL official Logo. A product of Visibilia Ltda
+FADCIL operates on the coronal, sagittal, and axial planes of patient data obtained from CT scans in  DICOM, NII, and NIfTI formats. FADCIL is structured into four main modules:  Preprocessing, Prediction, User Interface, and Feedback. The integration of these modules is illustrated in the following figure.
+
+.. figure:: ./images/fadcil-modular-architecture-visibilia.png
+   :alt: Basic modular architecture of FADCIL
    :align: center
-   :width: 380px
-   :height: 220px
 
 
 **Preprocessing Module**
