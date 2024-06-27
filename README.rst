@@ -59,12 +59,13 @@ FADCIL operates on the coronal, sagittal, and axial planes of patient data obtai
 This module directly handles CT scans,  preparing them for inference using deep learning models.  To accommodate potential format variations in the voxel spacing of CT scans, this module begins by compressing all inputs to the NIfTI format. Then, scans and reference masks are resampled to 0.75 x 0.75 x 0.8 mm resolution using cubic and nearest neighbor interpolation, respectively. From this uniform resolution, two new images are resampled: low resolution images with $3.0 x 3.0 x 3.2 mm and medium resolution images with 1.5 x 1.5 x 1.6 mm.
 
 
-- **Format Conversion**: Converts CT scans to NIfTI format and resamples them to a uniform resolution.
-- **Resolution Adjustment**: Processes scans at both low and medium resolutions to prepare them for model inference.
+
 
 **Prediction Module**
-- **YOLOv4**: Utilized to detect lesions in axial, coronal, and sagittal planes of CT scans. Trained using transfer learning on the RSNA Pneumonia dataset and fine-tuned for COVID-19 detection.
-- **3D U-Net**: Used to segment lung lesions at low and medium resolutions, focusing on COVID-19 specific features.
+
+This module combines YOLOv4 and 3D U-Net models to improve the accuracy of COVID-19 detection as shown in the following Figure~\ref{fig:fadcil:DLinteractions}. Resampled images with low resolution are processed by 3D U-Net. If 3D U-Net identifies large lesions characteristic of COVID-19, the diagnosis is confirmed. For cases involving smaller lesions or uncertain, the final diagnosis is determined by processing images at medium resolution.
+
+
 
 **User Interface Module**
 
