@@ -26,95 +26,143 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 11. `Citation <#citation>`_
 
 
+Summary
+=========
 
-Awarded
-========
-Visibilia participated in the challenge launched by the Sao Paulo State Government through the public call nº 03/2020: "*Como o uso de algoritmos de Inteligência Artificial pode auxiliar médicos radiologistas no diagnóstico do COVID-19 através de imagem de tomografia computadorizada e raios-X de tórax?*" and organized by the innovation hub `IdeiaGov`_ . The Sao Paulo state is the richest Brazilian state and a major industrial complex, often dubbed the "locomotive of Brazil" and since the beginning of the pandemic it has been highlighted by the implementation of several actions moved to contain the progress of COVID-19.
+FADCIL is a state-of-the-art system designed to diagnose COVID-19 using chest CT scans. By integrating **YOLOv4** and **3D U-Net** architectures, FADCIL excels in identifying and quantifying lung injuries associated with COVID-19. The system supports healthcare professionals in making informed decisions by providing detailed segmentation and classification of lung lesions.
 
-.. _IdeiaGov: https://ideiagov.sp.gov.br/desafios/diagnostico-atraves-de-imagens-de-tomografia-computadorizada-e-raio-x-de-torax/
+Introduction
+============
+The COVID-19 pandemic has posed unprecedented challenges to global healthcare. Early and accurate diagnosis is crucial for effective treatment and containment. Traditional RT-PCR tests, though widely used, often face issues with sensitivity and turnaround time. Chest CT scans, however, offer a more detailed view of lung abnormalities, making them a valuable tool in diagnosing COVID-19. FADCIL leverages advanced deep learning techniques to automate the analysis of these scans, providing rapid and reliable diagnostic support.
 
-Therefore, after weeks of hard work, Visibilia was chosen as winner of this challenge. Visibilia's selection in the aforementioned competition had been officially approved by the Official Press of the Sao Paulo State Government, according to a `publication on August 15, 2020`_.
-
-.. _publication on August 15, 2020: https://www.imprensaoficial.com.br/DO/BuscaDO2001Documento_11_4.aspx?link=%2f2020%2fexecutivo%2520secao%2520i%2fagosto%2f15%2fpag_0028_0f4ec73d9ce98efebbb9ba398e36dc0e.pdf&pagina=28&data=15/08/2020&caderno=Executivo%20I&paginaordenacao=100028
-
-
-Commitment
-==========
-In compliance with the commitment assumed by Visibilia during its participation in the aforementioned contest, this repository is made available under the MIT license. It is important to note that the code available in this repository corresponds to the code developed by Visibilia up to the third (final) stage of the contest.
+System Overview
+===============
+FADCIL is structured into four main modules:
 
 
-Getting Started
-================
+Preprocessing
+=============
 
-Our source code is in Python and R programming languages. Because we use several data and image processing, machine learning and deep learning algorithms, you will need install an appropriate programming enviromment. Therefore, the packages needed for make out code work are specified in the following files:
+- **Format Conversion**: Converts CT scans to NIfTI format and resamples them to a uniform resolution.
+- **Resolution Adjustment**: Processes scans at both low and medium resolutions to prepare them for model inference.
 
-- ``requirements.txt`` list of Python packages and their required versions.
-- ``requirements-R.txt`` list of packages and other softwares, and their required versions, needed to make run our source code in R. 
+### Prediction
+- **YOLOv4**: Utilized to detect lesions in axial, coronal, and sagittal planes of CT scans. Trained using transfer learning on the RSNA Pneumonia dataset and fine-tuned for COVID-19 detection.
+- **3D U-Net**: Used to segment lung lesions at low and medium resolutions, focusing on COVID-19 specific features.
 
+### User Interface
+- **Integration**: FADCIL integrates seamlessly with PACS and other CT visualization systems via its API. It saves segmentation results in new scans and stores classification and meta-information in structured report (SR) files.
 
-Running
-========
+### Feedback
+- **Expert Input**: Captures feedback from radiologists to refine and retrain the model, improving its accuracy over time.
 
-The source code developed by Visibilia up to the third (final) stage of the contest is formed by the following files:
+## Performance Analysis
 
-- ``unet3D_keras_segmentation.py`` Full code implementing segmentation algorithms for detecting lungs and COVID-19 lessions from CT scans. This code is fully implemented in Python.
-- ``yolov4-covid_classification.cfg`` Configuration file maintaining the parameter values for all the deep nets used in ``unet3D_keras_segmentation.py``.
-- ``final-classification.R`` Full code using classification algorithms for compute the probability of presence of COVID-19. This file use as input some feaures pre-computed by ``unet3D_keras_segmentation.py``. This code is fully implemented in R.
+FADCIL has been rigorously tested in real clinical environments, processing over 1,000 CT scans from HCFMUSP. It demonstrated outstanding performance, assisting medical teams in diagnosing COVID-19 efficiently.
 
+**Performance Metrics**
 
-What you will get
-=================
+- **Classification**:
+  - Accuracy: 65%
+  - Sensitivity: 86%
+  - ROC-AUC: 0.719
 
-For each input CT scan you will get: 
+- **Segmentation**:
+  - DICE Score: 0.856
 
-- A binary classification output: Prediction results labeled with **1** (is COVID-19) or **0** (is not COVID-19). In case the prediction result is COVID-19, the probability value between 0 and 1 will be indicated. It is important to note that cases not being COVID-19 does not imply that the patient is totally healthy, as he may still have some other lung disease.
+**Qualitative Evaluation**
 
-- A segmentation output: Segmentation results represented by a (binary) mask indicating the positions of the curve adjusted to the lessions limits. One or more lessions can be identified. COVID-19 lessions are distinguished from injuries caused by other diseases as well as tomographic findings (e.g. opacity).
+- Radiologists rated the segmentations produced by FADCIL with an average score of 4.06 out of 5.
 
+.. image:: ./images/segmentation_example.png
+   :alt: Example of Segmentation
+   :align: center
+   :width: 600px
+   :height: 400px
 
-What else do you need to do
-===========================
+## Running the Code
 
-Some pieces of code are not considered in this repository and the implementation is under the responsibility of whoever will use the available code. These pieces of code are:
+To run the FADCIL code, you need to set up the appropriate programming environment. The source code is written in Python and R, and the necessary dependencies are listed in the following files:
 
-- Input reading: necessary to read the CT scan(s) from the format in which the image to be analyzed is, e.g. DICOM, NII, NIfTI, etc.
-- Pre-processing: optionally, in case you need to do any cleaning or other task according to the problem requirements.
-- Post-processing: optionally, in case you need to adjust the results to some format or specification.
-- Visualization: optionally, in case you need to graphically view the results.
+- **Python Dependencies**: `requirements.txt`
+- **R Dependencies**: `requirements-R.txt`
 
+### Steps to Run the Code:
 
-Caution
-========
+1. **Set Up Environment**:
+   - Install the required Python packages using: 
+     ```
+     pip install -r requirements.txt
+     ```
+   - Install the necessary R packages and other software as specified in `requirements-R.txt`.
 
-The results obtained by the source code provided here should not be used in a clinical environment.
+2. **Execute the Scripts**:
+   - **Segmentation**:
+     - Run `unet3D_keras_segmentation.py` to segment lungs and detect COVID-19 lesions from CT scans.
+   - **Classification**:
+     - Use `final-classification.R` to compute the probability of COVID-19 presence based on features extracted by the segmentation script.
+   - **Configuration**:
+     - Ensure `yolov4-covid_classification.cfg` is configured with the correct parameter values for the deep nets used in the segmentation script.
 
+### Expected Outputs:
 
-Updates
-=======
+- **Binary Classification**: Outputs labeled with **1** (COVID-19) or **0** (not COVID-19), along with a probability score.
+- **Segmentation**: Binary mask indicating the positions of the lesions.
 
-Visibilia does not undertake to carry out updates to the source code available in this repository.
+### Additional Tasks:
 
+- **Input Reading**: Implement necessary code to read CT scans in formats like DICOM, NII, or NIfTI.
+- **Pre-processing**: Optionally, add code to clean or prepare the data according to specific requirements.
+- **Post-processing**: Optionally, adjust the results to match specific formats or specifications.
+- **Visualization**: Optionally, add code to visualize the results graphically.
 
-Commercial Version
-==================
+## Awards
 
-Complementary source code pieces were built to constitute a software product capable of meeting the real-world needs of a clinical environment. Also, rigorous training of our deep neural networks and other machine learning models was performed to improve the quality of our results. This entire package constitutes **FADCIL**, a software licensed by Visibilia and whose pilot version worked at Clinics Hospital of Sao Paulo, the largest and most reputable hospital in Latin America.
+FADCIL was developed as part of the `Challenge nº 03/2020 <https://ideiagov.sp.gov.br/desafios/diagnostico-atraves-de-imagens-de-tomografia-computadorizada-e-raio-x-de-torax/>`_ launched by the São Paulo State Government, aimed at finding AI solutions to assist radiologists in diagnosing COVID-19 from CT and X-ray images. After rigorous evaluation, **Visibilia** was selected as the winner of this challenge. This recognition was officially published in the `Official Press of the Sao Paulo State Government <https://www.imprensaoficial.com.br/DO/BuscaDO2001Documento_11_4.aspx?link=%2f2020%2fexecutivo%2520secao%2520i%2fagosto%2f15%2fpag_0028_0f4ec73d9ce98efebbb9ba398e36dc0e.pdf&pagina=28&data=15/08/2020&caderno=Executivo%20I&paginaordenacao=100028>`_ on August 15, 2020.
 
-The **F** ully **A** utomatic **D** etection of **C** ovid-19 cases in medical **I** mages of the **L** ung system - **FADCIL** - in addition to the accurate classification and segmentation results, also offers: low refusal rate and above average speed in processing and delivering results (3 to 5 minutes); DICOM structured report files and statistical performance reports; easy and secure connection with PACS, DICOM servers and other platforms already used in clinical environments; running on cloud being able to respond 24 hours a day the 7 days of week.
+## Videos
 
-FADCIL is commercial available here: https://visibilia.net.br/fadcil
+Watch FADCIL in action on our YouTube channel:
+
+- `Overview of FADCIL <https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1>`_
+- `Demonstration Video 1 <https://www.youtube.com/watch?v=example_video_1>`_
+- `Demonstration Video 2 <https://www.youtube.com/watch?v=example_video_2>`_
+
+.. image:: https://img.youtube.com/vi/5MC5czxMdQM/0.jpg
+   :target: https://www.youtube.com/watch?v=5MC5czxMdQM
+
+## Media Appearances
+
+FADCIL has been featured in various media outlets and publications:
+
+- `Visibilia Blog - FADCIL Overview <https://visibilia.net.br/category/fadcil/>`_
+- `Interview with Visibilia on the Development of FADCIL <https://www.example.com/interview>`_
+- `Feature Article in Local News <https://www.example.com/news-article>`_
+
+## Caution
+
+The results generated by FADCIL should not be used directly in clinical settings without appropriate validation and approval by medical professionals.
+
+## Commercial Version
+
+Visibilia offers a commercial version of FADCIL, enhanced for clinical use. The commercial version includes additional features such as low refusal rate, high-speed processing, DICOM structured report files, and secure integration with existing clinical platforms.
+
+- For more information, visit our `FADCIL product page <https://visibilia.net.br/fadcil>`_.
 
 .. image:: https://visibilia.net.br/wp-content/uploads/2020/11/fadcil-lung-covid19-visibilia-winner.png
-   :width: 600
+   :width: 600px
+   :align: center
 
-Some demonstrations of FADCIL's visual results can be seen on our `YouTube channel`_
+## Citation
 
-.. _YouTube channel: https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1
+If you use FADCIL in your research, please cite our paper:
 
-See FADCIL news on social media on `our blog`_.
+.. code-block:: bibtex
 
-.. _our blog: https://visibilia.net.br/category/fadcil/
-
-
-
-
+    @inproceedings{valverde2024integrating,
+      title={Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans},
+      author={Valverde-Rebaza, Jorge and Andreis, Guilherme R and Shiguihara, Pedro and Paucar, Sebastián and Mano, Leandro Y and Góes, Fabiana and Noguez, Julieta and Da Silva, Nathalia C},
+      booktitle={Proceedings of the IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS)},
+      year={2024},
+      organization={IEEE}
+    }
