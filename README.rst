@@ -51,7 +51,7 @@ FADCIL operates on the coronal, sagittal, and axial planes of patient data obtai
    :alt: Basic modular architecture of FADCIL
    :align: center
 
-\\
+
 
 
 **Preprocessing Module**
@@ -62,7 +62,7 @@ This module directly handles CT scans,  preparing them for inference using deep 
    :alt: YOLOv4 and 3D U-net integration at FADCIL: resampling at uniform resolution
    :align: center
 
-\\
+
 
 
 From the uniform resolution, two new images are resampled: low resolution images with $3.0 x 3.0 x 3.2 mm and medium resolution images with 1.5 x 1.5 x 1.6 mmas 
@@ -71,13 +71,17 @@ From the uniform resolution, two new images are resampled: low resolution images
    :alt: YOLOv4 and 3D U-net integration at FADCIL: resampling from the uniform resolution to low and medium resolution.
    :align: center
 
-\\
+
 
 
 **Prediction Module**
 
-This module combines YOLOv4 and 3D U-Net models to improve the accuracy of COVID-19 detection as shown in the following Figure~\ref{fig:fadcil:DLinteractions}. Resampled images with low resolution are processed by 3D U-Net. If 3D U-Net identifies large lesions characteristic of COVID-19, the diagnosis is confirmed. For cases involving smaller lesions or uncertain, the final diagnosis is determined by processing images at medium resolution.
+This module combines YOLOv4 and 3D U-Net models to improve the accuracy of COVID-19 detection. Resampled images with low resolution are processed by 3D U-Net. If 3D U-Net identifies large lesions characteristic of COVID-19, the diagnosis is confirmed. For cases involving smaller lesions or uncertain, the final diagnosis is determined by processing images at medium resolution. This process is shown in the following figure.
 
+
+.. figure:: ./images/yolo-3dunet-integration-fadcil-3.PNG
+   :alt: YOLOv4 and 3D U-net integration at FADCIL: 3D U0net processing CT scans at low resolution as part of FADCIL prediction module
+   :align: center
 
 
 **User Interface Module**
