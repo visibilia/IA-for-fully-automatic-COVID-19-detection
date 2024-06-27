@@ -15,8 +15,8 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 
 1. `Summary <#summary>`_
 2. `Introduction <#introduction>`_
-3. `System Overview <#system-overview>`_ \\
-   3.1. `Preprocessing <#preprocessing>`_ \\
+3. `System Overview <#system-overview>`_ 
+   \\ 3.1. `Preprocessing <#preprocessing>`_ \\
    3.2. `Prediction <#prediction>`_ \\
    3.3. `User Interface <#user-interface>`_ \\
    3.4. `Feedback <#feedback>`_ \\
