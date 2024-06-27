@@ -51,8 +51,13 @@ FADCIL operates on the coronal, sagittal, and axial planes of patient data obtai
    :alt: Basic modular architecture of FADCIL
    :align: center
 
+\\
+
 
 **Preprocessing Module**
+
+This module directly handles CT scans,  preparing them for inference using deep learning models.  To accommodate potential format variations in the voxel spacing of CT scans, this module begins by compressing all inputs to the NIfTI format. Then, scans and reference masks are resampled to 0.75 x 0.75 x 0.8 mm resolution using cubic and nearest neighbor interpolation, respectively. From this uniform resolution, two new images are resampled: low resolution images with $3.0 x 3.0 x 3.2 mm and medium resolution images with 1.5 x 1.5 x 1.6 mm.
+
 
 - **Format Conversion**: Converts CT scans to NIfTI format and resamples them to a uniform resolution.
 - **Resolution Adjustment**: Processes scans at both low and medium resolutions to prepare them for model inference.
