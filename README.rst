@@ -1,12 +1,11 @@
 FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lung
 ===============================================================================
-.. |logo| image:: ./images/fadcil_logo.png
+.. figure:: ./images/fadcil_logo.png
    :alt: FADCIL official Logo. A product of Visibilia Ltda
    :align: center
    :width: 380px
    :height: 220px
 
-|logo| 
 
 Copyright (C) 2020-2024 `Visibilia`_
 
