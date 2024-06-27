@@ -225,8 +225,7 @@ Videos
 Watch FADCIL related video here:
 
 - `Overview of FADCIL <https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1>`_
-- `Paper presentation at CBMS 2024 by Dr. Jorge Valverde-Rebaza <
-https://event.fourwaves.com/cbms2024/abstracts/a7c37654-93f1-439b-a5de-77e8f47ba45b>`_
+- `Paper presentation at CBMS 2024 by Dr. Jorge Valverde-Rebaza <https://event.fourwaves.com/cbms2024/abstracts/a7c37654-93f1-439b-a5de-77e8f47ba45b>`_
 
 
 
