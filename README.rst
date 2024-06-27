@@ -29,7 +29,9 @@ Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 
 Summary
 =========
 
-FADCIL is a state-of-the-art system designed to diagnose COVID-19 using chest CT scans. By integrating **YOLOv4** and **3D U-Net** architectures, FADCIL excels in identifying and quantifying lung injuries associated with COVID-19. The system supports healthcare professionals in making informed decisions by providing detailed segmentation and classification of lung lesions.
+The Coronavirus disease 2019 (COVID-19) pandemic has presented unprecedented challenges to global healthcare systems, urgently calling for innovative diagnostic solutions. This repository introduces the source code and other supplementary materials of FADCIL system, a cutting-edge deep learning framework designed for rapid and accurate COVID-19 diagnosis from chest computed tomography (CT) images. By leveraging an architecture based on **YOLO** and **3D U-Net**, FADCIL excels in identifying and quantifying lung injuries attributable to COVID-19, distinguishing them from other pathologies. In the real-world clinical environment of The Hospital de las Clínicas de São Paulo (`HCFMUSP`_), FADCIL achieved a DICE coefficient above 0.82. FADCIL also enhances the reliability of COVID-19 assessment, empowering healthcare professionals to make informed decisions and effectively manage patient care. Thus, this paper outlines the FADCIL architecture and presents an in-depth analysis of quantitative and qualitative evaluation results derived from a novel dataset comprising over 1000 CT scans. Furthermore, we provide access to the FADCIL's source code for public use.
+
+.. _HCFMUSP: https://www.hc.fm.usp.br/hc/portal/
 
 Introduction
 ============
