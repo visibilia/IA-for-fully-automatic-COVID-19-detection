@@ -1,19 +1,38 @@
 FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lung
-==========================================
+===============================================================================
 .. image:: ./images/fadcil_logo.png
-   :alt: FADCIL Logo
+   :alt: FADCIL official Logo. A product of Visibilia Ltda
    :align: center
+   :width: 300px
+   :height: 300px
 
 
 Copyright (C) 2020-2024 `Visibilia`_
 
 .. _Visibilia: https://visibilia.net.br 
 
-Welcome to the repository for **FADCIL**, a state-of-the-art deep learning framework designed for the automatic detection of COVID-19 from chest CT scans. This repository contains (part of) the code and resources associated with our paper, **"Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans"**, published at the IEEE 37th International Symposium on Computer Based Medical Systems `CBMS 2024`_, as well as part of the commitment assumed by Visibilia during its participation in the Challenge nº 03/2020 launched by the Sao Paulo State Government.
 
-.. _CBMS 2024: https://eventos.tec.mx/s/lt-event?language=es_MX&id=a5u8X000000Igo9QAC#/Inicio
 
-This repository shows the source code of the algorithms for automatic detection of the presence of COVID-19 in medical images of computed tomography (CT) scans of the lung with high precision. This system identifies the areas of the lung with lesions caused by the disease with high precision, quantifying them in relation to the total lung parenchyma. Moreover, this system aproperly distinguishes lessions caused by COVID-19 from such caused by other diseases.
+
+Welcome to the repository for **FADCIL**, a cutting-edge deep learning framework designed for the automatic detection of COVID-19 from chest CT scans. This repository provides the source code for FADCIL, which identifies and quantifies lung lesions caused by COVID-19 with high precision, differentiating them from other pulmonary diseases.
+
+## Contents
+1. `Summary <#summary>`_
+2. `Introduction <#introduction>`_
+3. `System Overview <#system-overview>`_
+   1. `Preprocessing <#preprocessing>`_
+   2. `Prediction <#prediction>`_
+   3. `User Interface <#user-interface>`_
+   4. `Feedback <#feedback>`_
+4. `Performance Analysis <#performance-analysis>`_
+5. `Running the Code <#running-the-code>`_
+6. `Awards <#awards>`_
+7. `Videos <#videos>`_
+8. `Media Appearances <#media-appearances>`_
+9. `Caution <#caution>`_
+10. `Commercial Version <#commercial-version>`_
+11. `Citation <#citation>`_
+
 
 
 Awarded
