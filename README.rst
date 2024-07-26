@@ -255,7 +255,7 @@ Publication
 ============
 See scientific publications related to FADCIL:
 
-- "Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans" at IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS 2024). Free access to our `CBMS 2024 paper`_.
+- "Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans" at IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS 2024). Access via: IEExplore at `CBMS IEEExplore 2024 paper'_  and ResearchFate (free access) at `CBMS 2024 paper`_.
 
 
 Commercial Version
@@ -310,3 +310,4 @@ If you use FADCIL in your research, please cite our paper:
 .. _Tecnologico de Monterrey: https://tec.mx/en/research
 .. _IDB: https://www.iadb.org/es/proyecto/BR-T1457
 .. _CBMS 2024 paper: https://www.researchgate.net/publication/381767923_Integrating_YOLO_and_3D_U-Net_for_COVID-19_Diagnosis_on_Chest_CT_Scans
+.. _CBMS IEEExplore 2024 paper: https://ieeexplore.ieee.org/document/10600915
