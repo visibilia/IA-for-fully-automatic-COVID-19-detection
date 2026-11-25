@@ -318,21 +318,7 @@ Visibilia offers a commercial version of FADCIL, enhanced for clinical use. It a
 
 <br>
 
-## ◆ Acknowledgments
 
-We thank the following institutions:
-[HCFMUSP](https://www.hc.fm.usp.br/hc/portal/) ·
-[InRad](https://inrad.hc.fm.usp.br/) ·
-[Inova HC](https://inovahc.hc.fm.usp.br/) ·
-[Instituto de Pesquisas Tecnológicas (IPT)](https://ipt.br/) ·
-[Instituto Tellus](https://tellus.org.br/) ·
-[IdeiaGov](https://www.saopaulo.sp.gov.br/tag/ideiagov/) ·
-[Secretaria de Desenvolvimento Econômico do Estado de São Paulo (SDE)](https://www.desenvolvimentoeconomico.sp.gov.br/) ·
-[AWS](https://aws.amazon.com/pt/health/healthtech/) ·
-Fondo de Apoyo a Publicaciones (FAP) from [Tecnológico de Monterrey](https://tec.mx/en/research) ·
-[Inter-American Development Bank (IDB)](https://www.iadb.org/es/proyecto/BR-T1457)
-
-<br>
 
 ## ◆ Citation
 
