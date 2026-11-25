@@ -1,313 +1,374 @@
-FADCIL: Fully Automatic Detection of Covid-19 cases in medical Images of the Lung
-===============================================================================
-.. figure:: ./images/fadcil_logo.png
-   :alt: FADCIL official Logo. A product of Visibilia Ltda
-   :align: center
-   :width: 370px
-   :height: 210px
+<div align="center">
+
+<img src="images/fadcil_logo.png" width="220" alt="FADCIL logo">
+
+<sub>RESEARCH PAPER · IEEE CBMS 2024</sub>
+
+<h1>Fully Automatic COVID-19 Detection on Chest CT</h1>
+
+<p><b>FADCIL</b>: <b>F</b>ully <b>A</b>utomatic <b>D</b>etection of <b>C</b>ovid-19 cases in medical <b>I</b>mages of the <b>L</b>ung. Integrating YOLOv4 and 3D U-Net to diagnose COVID-19 and segment lung lesions in chest CT scans</p>
+
+<sub>Jorge Valverde-Rebaza · Guilherme R. Andreis · Pedro Shiguihara · Sebastián Paucar · Leandro Y. Mano · Fabiana Góes · Julieta Noguez · Nathalia C. Da Silva</sub><br>
+<sub><i>A Visibilia project, deployed with the Hospital das Clínicas of the University of São Paulo (HCFMUSP), Brazil</i></sub>
 
+<a href="https://ieeexplore.ieee.org/document/10600915"><img src="https://img.shields.io/badge/Paper-EAEAEA?style=flat&logo=ieee&logoColor=555555" alt="Paper"></a>
+<a href="https://doi.org/10.1109/CBMS61543.2024.00011"><img src="https://img.shields.io/badge/DOI-EAEAEA?style=flat&logo=doi&logoColor=555555" alt="DOI"></a>
+<img src="https://img.shields.io/badge/Python-EAEAEA?style=flat&logo=python&logoColor=555555" alt="Python">
+<img src="https://img.shields.io/badge/R-EAEAEA?style=flat&logo=r&logoColor=555555" alt="R">
+<img src="https://img.shields.io/badge/YOLOv4-EAEAEA?style=flat" alt="YOLOv4">
+<img src="https://img.shields.io/badge/3D_U--Net-EAEAEA?style=flat" alt="3D U-Net">
+<img src="https://img.shields.io/badge/Medical_Imaging-EAEAEA?style=flat" alt="Medical Imaging">
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-EAEAEA?style=flat&labelColor=EAEAEA" alt="MIT License"></a>
+
+<br>
+
+<table>
+  <tr>
+    <th colspan="3"><br>Two Networks, One Diagnosis<br><br></th>
+  </tr>
+  <tr>
+    <td align="center" width="280"><br><sub>SEGMENTATION</sub><br><b>3D U-Net</b><br><sub>Low-resolution volumes · large lesions</sub><br><br></td>
+    <td align="center" width="280"><br><sub>DETECTION</sub><br><b>YOLOv4 × 3</b><br><sub>Axial · coronal · sagittal · small lesions</sub><br><br></td>
+    <td align="center" width="280"><br><sub>CLASSIFICATION</sub><br><b>XGBoost</b><br><sub>Lesion features → COVID-19 probability</sub><br><br></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">↓<br><br><b>Consensus-based COVID-19 Diagnosis</b><br><sub>Classification · Lesion segmentation · Lung impairment</sub><br><br></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center" width="210"><h3>0.82+</h3><sub>DICE coefficient in a<br>real clinical setting</sub></td>
+    <td align="center" width="210"><h3>1,000+</h3><sub>CT scans in the<br>evaluation dataset</sub></td>
+    <td align="center" width="210"><h3>1,200+</h3><sub>automated diagnoses<br>during the pandemic</sub></td>
+    <td align="center" width="210"><h3>10–20 s</h3><sub>to analyze<br>one CT scan</sub></td>
+  </tr>
+</table>
+
+<sub>
+<a href="#-at-a-glance">At a glance</a> ·
+<a href="#-from-challenge-to-clinic">Timeline</a> ·
+<a href="#-system-overview">System</a> ·
+<a href="#-how-fadcil-reaches-a-diagnosis">Pipeline</a> ·
+<a href="#-training-the-networks">Training</a> ·
+<a href="#-videos">Videos</a> ·
+<a href="#-in-the-news">In the news</a> ·
+<a href="#-awards-and-recognition">Awards</a> ·
+<a href="#-running-the-code">Running the code</a> ·
+<a href="#-citation">Citation</a>
+</sub>
 
-Copyright (C) 2020-2024 `Visibilia`_
+</div>
+
+<br>
+
+## ◆ At a glance
+
+When the COVID-19 pandemic hit, RT-PCR tests were essential but not always reliable, and **chest CT scans**, with a sensitivity of up to 95%, became a key diagnostic tool. Reading thousands of scans under pressure, however, overwhelmed radiology teams.
 
-Welcome to the repository for **FADCIL** (Fully Automatic Detection of Covid-19 cases in medical Images of the Lung), a cutting-edge deep learning framework designed for the automatic detection of COVID-19 from chest CT scans. By integrating state-of-the-art architectures like **YOLOv4** and **3D U-Net**, FADCIL excels in accurately identifying and quantifying lung lesions caused by COVID-19, distinguishing them from other pulmonary diseases. This repository provides the source code and other materials for FADCIL as follows:
+**FADCIL** is a deep learning framework that analyzes chest CT scans fully automatically. It segments the lungs, finds COVID-19 lesions at different stages, tells them apart from other pulmonary conditions, maps where they are and quantifies how much of the lung is affected. It combines two architectures that had been little explored for this task, **YOLOv4** and **3D U-Net**, enhanced through transfer learning, and runs in the cloud on GPUs with a processing queue to handle scans in real time.
 
-1. `Summary <#summary>`_
-2. `Introduction <#introduction>`_
-3. `System Overview <#system-overview>`_ 
-4. `Deep Learning Networks Training <#deep-learning-networks-training>`_
-5. `Running the Code <#running-the-code>`_
-6. `Awards <#awards>`_
-7. `Videos <#videos>`_
-8. `Media Appearances <#media-appearances>`_
-9. `Caution <#caution>`_
-10. `Publication <#publication>`_
-11. `Commercial Version <#commercial-version>`_
-12. `Acknowledgment <#acknowledgment>`_
-13. `Citation <#citation>`_
+> [!IMPORTANT]
+> **TL;DR.** FADCIL was one of the winners of São Paulo's 2020 public challenge for AI-based COVID-19 diagnosis. Running alongside HCFMUSP, the largest hospital in Latin America, it delivered **1,200+ free automated diagnoses** to medical teams and reached a **DICE coefficient above 0.82** in a real clinical environment. The peer-reviewed method, evaluated on **more than 1,000 CT scans**, was published at IEEE CBMS 2024, and its source code is in this repository.
 
+<br>
 
-Summary
-=========
+## ◆ From challenge to clinic
 
-The Coronavirus disease 2019 (COVID-19) pandemic has presented unprecedented challenges to global healthcare systems, urgently calling for innovative diagnostic solutions. This repository introduces the source code and other supplementary materials of **FADCIL** system, a cutting-edge deep learning framework designed for rapid and accurate COVID-19 diagnosis from chest computed tomography (CT) images. By leveraging an architecture based on **YOLO** and **3D U-Net**, FADCIL excels in identifying and quantifying lung injuries attributable to COVID-19, distinguishing them from other pathologies. In the real-world clinical environment of The Hospital das Clínicas de São Paulo (`HCFMUSP`_), Brazil, FADCIL achieved a DICE coefficient above 0.82. FADCIL also enhances the reliability of COVID-19 assessment, empowering healthcare professionals to make informed decisions and effectively manage patient care. Thus, this repository outlines the FADCIL source code, materials and presents an in-depth analysis of quantitative and qualitative evaluation results.
+| When | Milestone |
+| :--- | :-------- |
+| **Apr 2020** | The São Paulo State Government and HCFMUSP launch [IdeiaGov Challenge nº 03/2020](https://ideiagov.sp.gov.br/desafios/diagnostico-atraves-de-imagens-de-tomografia-computadorizada-e-raio-x-de-torax/): *how can AI help radiologists diagnose COVID-19 from chest CT and X-ray?* |
+| **Aug 2020** | FADCIL, by Visibilia, is selected as one of the winning solutions for CT scans. The result appears in the [Official Gazette of the State of São Paulo](https://www.imprensaoficial.com.br/DO/BuscaDO2001Documento_11_4.aspx?link=%2f2020%2fexecutivo%2520secao%2520i%2fagosto%2f15%2fpag_0028_0f4ec73d9ce98efebbb9ba398e36dc0e.pdf&pagina=28&data=15/08/2020&caderno=Executivo%20I&paginaordenacao=100028) on August 15, 2020 |
+| **Sep – Dec 2020** | FADCIL is integrated with **RadVid-19**, HCFMUSP's platform collecting chest images from 50+ Brazilian hospitals. It delivers **1,200+ automated diagnoses free of charge**, supporting **1,100+ patients** |
+| **Jun 2021** | FADCIL's contribution is featured in the Novartis Foundation's international case study *Pursuing AI maturity in health: How São Paulo, Brazil built an AI solution for diagnosing COVID-19* |
+| **Jun 2024** | The method is published at the **IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS 2024)**, and the source code is released |
 
+<br>
 
+## ◆ System overview
 
-Introduction
-============
-The novel Coronavirus, SARS-CoV-2, emerged in late 2019, leading to a global pandemic with significant morbidity, mortality, and socioeconomic disruption. The virus's high contagion and severe respiratory effects posed major challenges to public health, requiring urgent responses from governments, healthcare institutions, and scientists. While RT-PCR tests are crucial for COVID-19 diagnosis, their reliability can vary. As a result, medical imaging, particularly chest CT scans, became a vital tool for COVID-19 detection due to their high sensitivity of up to 95%. This led to the integration of AI techniques for accurate and automated analysis of medical images. Deep learning, especially CNN-based models, has been highly effective in analyzing CT scans. However, models like YOLO and 3D U-Net have been less explored. 
+FADCIL reads CT scans in **DICOM, NII and NIfTI** formats and works on the axial, coronal and sagittal planes. It is organized into four modules:
 
-At the beginning of the pandemic in Brazil, in April 2020, the São Paulo government and HCFMUSP launched a challenge to identify the best AI tool for diagnosing COVID-19 from medical images. The FADCIL system emerged as the leading solution, excelling in diagnosing COVID-19 from CT scans. FADCIL combines YOLOv4 and 3D U-Net architectures, enhanced through transfer learning, achieving competitive results. FADCIL performs precise lung segmentation and identifies COVID-19 lesions at various stages, distinguishing them from other conditions, mapping lesion locations, and quantifying lung impairment.
+<p align="center">
+  <img src="images/fadcil-modular-architecture-visibilia.png" width="90%" alt="Modular architecture of FADCIL"><br>
+  <sub><b>Modular architecture of FADCIL.</b> Preprocessing and feedback feed the prediction module, whose results reach radiologists through PACS via the FADCIL API.</sub>
+</p>
 
-To ensure efficient cloud functioning, FADCIL uses a processing queue system and GPUs to minimize bottlenecks during real-time CT scan processing. Its exceptional performance and support to HCFMUSP’s medical teams during the pandemic gained significant attention and became the subject of an international case study.
+<table>
+  <tr>
+    <td width="25%" valign="top"><b>Preprocessing</b><br><sub>Converts every scan to NIfTI and resamples it to a uniform voxel spacing, then derives low- and medium-resolution versions.</sub></td>
+    <td width="25%" valign="top"><b>Prediction</b><br><sub>Combines 3D U-Net and YOLOv4 to detect, segment and classify COVID-19 lesions, then unifies their results.</sub></td>
+    <td width="25%" valign="top"><b>User interface</b><br><sub>No UI of its own: integrates with PACS or other CT viewers through the FADCIL API, writing segmentations as new scans and results as structured reports.</sub></td>
+    <td width="25%" valign="top"><b>Feedback</b> <sub>(optional)</sub><br><sub>Captures radiologists' feedback to refine and retrain the models over time.</sub></td>
+  </tr>
+</table>
 
+<br>
 
+## ◆ How FADCIL reaches a diagnosis
 
+Every scan is first resampled to three resolutions, each serving a different network:
 
-System Overview
-===============
+| Resolution | Voxel spacing | Used by |
+| :--------- | :------------ | :------ |
+| Uniform    | 0.75 × 0.75 × 0.8 mm | Reference for all further resampling |
+| Low        | 3.0 × 3.0 × 3.2 mm   | 3D U-Net, fast screening for large lesions |
+| Medium     | 1.5 × 1.5 × 1.6 mm   | YOLOv4 and 3D U-Net, fine analysis of small or uncertain cases |
+
+<p align="center">
+  <img src="images/yolo-3dunet-integration-fadcil-visibilia.PNG" width="90%" alt="Integration of YOLOv4 and 3D U-Net in the FADCIL prediction module"><br>
+  <sub><b>Integration of YOLOv4 and 3D U-Net in the prediction module.</b> Large lesions confirm COVID-19 directly. Small or absent lesions require the agreement of both networks.</sub>
+</p>
+
+| What 3D U-Net finds at low resolution | Next step | Final call |
+| :------------------------------------ | :-------- | :--------- |
+| Medium or large lesions | None | **COVID-19 confirmed** |
+| Small lesions | YOLOv4 and 3D U-Net analyze the medium-resolution scan | **COVID-19 confirmed by consensus** |
+| No lesions | YOLOv4 and 3D U-Net analyze the medium-resolution scan | **No COVID-19, confirmed by consensus** |
+
+<details>
+<summary><b>Step-by-step figures of the pipeline</b></summary>
+<br>
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="images/yolo-3dunet-integration-fadcil-1.PNG" alt="Resampling to uniform resolution"><br><sub><b>1</b> · Resampling to a uniform resolution</sub></td>
+    <td width="50%" align="center"><img src="images/yolo-3dunet-integration-fadcil-2.PNG" alt="Resampling to low and medium resolution"><br><sub><b>2</b> · Deriving low- and medium-resolution scans</sub></td>
+  </tr>
+</table>
+
+<p align="center">
+  <img src="images/yolo-3dunet-integration-fadcil-3.PNG" width="90%" alt="3D U-Net processing low-resolution scans"><br>
+  <sub><b>3</b> · 3D U-Net screens the low-resolution scan</sub>
+</p>
+
+<p align="center">
+  <img src="images/yolo-3dunet-integration-fadcil-4.PNG" width="90%" alt="YOLOv4 processing medium-resolution scans"><br>
+  <sub><b>4</b> · YOLOv4 examines the medium-resolution scan for small lesions</sub>
+</p>
+
+</details>
+
+<br>
+
+## ◆ Training the networks
+
+### YOLOv4 on three anatomical planes
+
+YOLO works on 2D images, so FADCIL treats each CT scan as a stack of slices and trains **three YOLOv4 networks**, one per plane, with the [DarkNet](https://github.com/AlexeyAB/darknet) framework (about 20 hours of training). Their 2D bounding boxes are merged by region overlap into **3D regions** of COVID-19-related abnormalities.
+
+| Network | mAP | Weight in *YOLOv4-3D weighted* |
+| :------ | :-: | :----------------------------: |
+| YOLOv4-Axial    | **0.714** | 0.40 |
+| YOLOv4-Coronal  | 0.596     | 0.22 |
+| YOLOv4-Sagittal | 0.693     | 0.38 |
+
+Each network finds the lungs easily, but many slices hold no visible lesion, so a single network cannot decide alone. Two 3D combinations solve this: **YOLOv4-3D weighted** (weights above) and **YOLOv4-3D averaged** (equal weights). Keeping only regions where at least two of the three networks agree filters out false positives.
+
+### 3D U-Net for segmentation
+
+3D U-Net learns from expert annotations to capture fine detail in the volume. Because of its memory demands, each scan is split into patches, with mirroring at the borders, and the predictions are stitched back to the original size. To keep false positives low, a perfect Dice score of 1 is required when both the prediction and the reference show no lesions. Two networks were trained with Keras:
+
+- **3D U-Net (COVID-19 only):** trained only on reference masks of COVID-19 cases.
+- **3D U-Net (other cases):** trained on masks of other diseases and imaging findings, such as opacities.
+
+### One unified model
+
+After extensive testing, the four networks were combined with the following weights. Lesion sizes and categories from this unified configuration train an **XGBoost** classifier, selected with H2O AutoML, that outputs the probability of COVID-19. The final segmentation combines both 3D U-Nets.
+
+```mermaid
+pie showData title Weights of the unified network (%)
+    "YOLOv4-3D weighted" : 64
+    "YOLOv4-3D averaged" : 24
+    "3D U-Net (COVID-19 only)" : 8
+    "3D U-Net (other cases)" : 4
+```
+
+More details are available in the [published paper](#-citation).
+
+<br>
+
+## ◆ Videos
+
+Short clips of FADCIL analyzing real chest CT scans, playing right here. Lungs are outlined in green and COVID-19 lesions in red. Click any clip to open the full-resolution video on YouTube.
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://www.youtube.com/watch?v=Z8YSy7dcKIU"><img src="images/videos/fadcil-axial-segmentation.gif" width="100%" alt="FADCIL segmenting lungs and COVID-19 lesions slice by slice on an axial CT scan"></a><br>
+      <b>AI diagnosis of COVID-19 on lung CT</b><br>
+      <sub>Slice-by-slice segmentation of lungs and lesions · full video 0:19</sub>
+    </td>
+    <td width="50%" align="center">
+      <a href="https://www.youtube.com/watch?v=C9yNXYsAQNo"><img src="images/videos/fadcil-3d-lesions.gif" width="100%" alt="Rotating 3D reconstruction of lungs with COVID-19 lesions in red"></a><br>
+      <b>COVID-19 lesions in 3D</b><br>
+      <sub>Rotating 3D reconstruction of the affected lungs · full video 0:09</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://www.youtube.com/watch?v=3UjsloUnRO8"><img src="images/videos/fadcil-small-lesion.gif" width="100%" alt="FADCIL detecting a single small COVID-19 lesion on a coronal CT scan"></a><br>
+      <b>Catching a small lesion</b><br>
+      <sub>A single small focus detected in an otherwise clear lung · full video 0:07</sub>
+    </td>
+    <td width="50%" align="center">
+      <a href="https://www.youtube.com/watch?v=W-NGyPA4xE0"><img src="images/videos/fadcil-bilateral-lesions.gif" width="100%" alt="FADCIL mapping extensive COVID-19 lesions across both lungs on a coronal CT scan"></a><br>
+      <b>Extensive bilateral involvement</b><br>
+      <sub>Widespread lesions mapped across both lungs · full video 0:05</sub>
+    </td>
+  </tr>
+</table>
 
-FADCIL operates on the coronal, sagittal, and axial planes of patient data obtained from CT scans in  DICOM, NII, and NIfTI formats. FADCIL is structured into four main modules:  Preprocessing, Prediction, User Interface, and Feedback. The integration of these modules is illustrated in the following figure.
+<p align="center">
+  <a href="https://www.youtube.com/playlist?list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA"><img src="https://img.shields.io/badge/Full_FADCIL_playlist-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Full FADCIL playlist on YouTube"></a>
+  <a href="https://event.fourwaves.com/cbms2024/abstracts/a7c37654-93f1-439b-a5de-77e8f47ba45b"><img src="https://img.shields.io/badge/Paper_presentation-CBMS_2024-555555?style=for-the-badge" alt="Paper presentation at CBMS 2024"></a>
+</p>
 
-.. figure:: ./images/fadcil-modular-architecture-visibilia.png
-   :alt: Basic modular architecture of FADCIL
-   :align: center
+<br>
 
+## ◆ In the news
 
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <a href="https://visibilia.net.br/visibilia-vence-concurso-covid19-fadcil-imagens-medicas/"><img src="https://visibilia.net.br/wp-content/uploads/2020/08/tomografia_covid19-fadcil-visibilia.png" alt="CT scans with COVID-19 lesions identified by FADCIL"></a><br>
+      <sub>VISIBILIA · AUG 19, 2020</sub><br>
+      <b><a href="https://visibilia.net.br/visibilia-vence-concurso-covid19-fadcil-imagens-medicas/">Visibilia develops AI to fight COVID-19 and wins international challenge</a></b><br>
+      <sub>How FADCIL was selected in São Paulo's public call 03/2020, which drew 19 participating institutions, and why its CT analysis takes only seconds.</sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://www.icmc.usp.br/noticias/5040-sistema-inteligente-capaz-de-identificar-tomografias-com-sinais-de-covid-19-e-selecionado-em-desafio-internacional"><img src="https://www.icmc.usp.br/imprensa/5040/sistema-inteligente-capaz-de-identificar-tomografias-com-sinais-de-covid-19-e-selecionado-em-desafio-internacional.jpg" alt="Illustration of lungs affected by COVID-19"></a><br>
+      <sub>ICMC · UNIVERSITY OF SÃO PAULO · SEP 17, 2020</sub><br>
+      <b><a href="https://www.icmc.usp.br/noticias/5040-sistema-inteligente-capaz-de-identificar-tomografias-com-sinais-de-covid-19-e-selecionado-em-desafio-internacional">Intelligent system that identifies CT scans with signs of COVID-19 is selected in international challenge</a></b><br>
+      <sub>The story of the ICMC alumni behind FADCIL, and how training on varied anatomy makes it robust across patients.</sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://visibilia.net.br/ia-da-visibilia-contribui-em-estudo-de-caso-internacional/"><img src="https://visibilia.net.br/wp-content/uploads/2021/06/niver-1-ano-desafio-capa-2.jpg" alt="FADCIL integrated with a CT viewer, with partner logos"></a><br>
+      <sub>VISIBILIA · JUN 21, 2021</sub><br>
+      <b><a href="https://visibilia.net.br/ia-da-visibilia-contribui-em-estudo-de-caso-internacional/">Visibilia's AI contributes to an international case study</a></b><br>
+      <sub>One year on: 1,200+ free automated diagnoses for HCFMUSP and São Paulo hospitals, and a Novartis Foundation case study on the initiative.</sub>
+    </td>
+  </tr>
+</table>
 
+<sub>Articles in Portuguese. More coverage on the <a href="https://visibilia.net.br/category/fadcil/">Visibilia blog</a>.</sub>
 
-**Preprocessing Module**
+<br>
 
-This module directly handles CT scans,  preparing them for inference using deep learning models.  To accommodate potential format variations in the voxel spacing of CT scans, this module begins by compressing all inputs to the NIfTI format. Then, scans and reference masks are resampled to 0.75 x 0.75 x 0.8 mm resolution using cubic and nearest neighbor interpolation, respectively. This process is shown in the following figure.
+## ◆ Awards and recognition
 
-.. figure:: ./images/yolo-3dunet-integration-fadcil-1.PNG
-   :alt: YOLOv4 and 3D U-net integration at FADCIL: resampling at uniform resolution
-   :align: center
+- **Winner, IdeiaGov Challenge nº 03/2020.** Launched by the São Paulo State Government to find AI solutions that help radiologists diagnose COVID-19 from CT and X-ray images. After a rigorous evaluation, Visibilia was selected as a winner, as officially published in the [Official Gazette of the State of São Paulo](https://www.imprensaoficial.com.br/DO/BuscaDO2001Documento_11_4.aspx?link=%2f2020%2fexecutivo%2520secao%2520i%2fagosto%2f15%2fpag_0028_0f4ec73d9ce98efebbb9ba398e36dc0e.pdf&pagina=28&data=15/08/2020&caderno=Executivo%20I&paginaordenacao=100028) on August 15, 2020.
+- **International case study.** FADCIL's real-world contribution is part of the Novartis Foundation's 2021 case study on how São Paulo built an AI solution for diagnosing COVID-19.
 
+<br>
 
+## ◆ Running the code
 
+The source code is written in **Python** and **R**.
 
-From the uniform resolution, two new images are resampled: low resolution images with $3.0 x 3.0 x 3.2 mm and medium resolution images with 1.5 x 1.5 x 1.6 mmas 
+| File | Description |
+| :--- | :---------- |
+| [`unet3D_keras_segmentation.py`](unet3D_keras_segmentation.py) | 3D U-Net model (Keras / TensorFlow) that segments the lungs and COVID-19 lesions |
+| [`yolov4-covid_classification.cfg`](yolov4-covid_classification.cfg) | DarkNet configuration of the YOLOv4 networks |
+| [`final-classification.R`](final-classification.R) | Classifier (H2O AutoML, XGBoost) that computes the probability of COVID-19 from the extracted features |
+| [`requirements.txt`](requirements.txt) | Python dependencies |
+| [`requirements-R.txt`](requirements-R.txt) | R and system dependencies: Java 8 (64-bit JDK), R 3 or later, H2O 3.32.0.2, dplyr 1.0.2, tidyverse 1.3.0 |
+| [`images/`](images) | Architecture and pipeline figures |
 
-.. figure:: ./images/yolo-3dunet-integration-fadcil-2.PNG
-   :alt: YOLOv4 and 3D U-net integration at FADCIL: resampling from the uniform resolution to low and medium resolution.
-   :align: center
+### 1. Set up the environment
 
+Install the Python packages:
 
+```bash
+pip install -r requirements.txt
+```
 
+Then install the R packages and other software listed in `requirements-R.txt`.
 
-**Prediction Module**
+### 2. Execute the scripts
 
-This module combines YOLOv4 and 3D U-Net models to improve the accuracy of COVID-19 detection. Resampled images with low resolution are processed by 3D U-Net. If 3D U-Net identifies large lesions characteristic of COVID-19, the diagnosis is confirmed. For cases involving smaller lesions or uncertain, the final diagnosis is determined by processing images at medium resolution. This process is shown in the following figure.
+- **Segmentation:** run `unet3D_keras_segmentation.py` to segment the lungs and detect COVID-19 lesions in CT scans.
+- **Classification:** run `final-classification.R` to compute the probability of COVID-19 from the features extracted by the segmentation step.
+- **Configuration:** make sure `yolov4-covid_classification.cfg` holds the right parameter values for the deep networks used in the segmentation step.
 
+### 3. Expected outputs
 
-.. figure:: ./images/yolo-3dunet-integration-fadcil-3.PNG
-   :alt: YOLOv4 and 3D U-net integration at FADCIL: 3D U-net processing CT scans at low resolution as part of FADCIL prediction module
-   :align: center
+- **Binary classification:** label **1** (COVID-19) or **0** (not COVID-19), together with a probability score.
+- **Segmentation:** a binary mask marking the position of the lesions.
 
+### Additional tasks
 
-YOLO version 4 (YOLOv4) processes CT scans at medium resolution, focusing on work on identify the presence of the virus in small lesions or confirm the absence when there are no injuries. It is shown in the following figure.
+- **Input reading:** implement the code needed to read CT scans in DICOM, NII or NIfTI format.
+- **Pre-processing** *(optional)*: add code to clean or prepare the data for your requirements.
+- **Post-processing** *(optional)*: adjust the results to specific formats or specifications.
+- **Visualization** *(optional)*: add code to display the results graphically.
 
+> [!WARNING]
+> **Caution.** The results generated by FADCIL must not be used directly in clinical settings without appropriate validation and approval by medical professionals.
 
-.. figure:: ./images/yolo-3dunet-integration-fadcil-4.PNG
-   :alt: YOLOv4 and 3D U-net integration at FADCIL: YOLOv4 processing CT scans at medium resolution as part of FADCIL prediction module
-   :align: center
+<br>
 
+## ◆ Commercial version
 
-COVID-19 diagnosis is only confirmed if 3D U-Net identifies large characteristic lesions of the disease. However, in cases where lesions are minimal or absent, the diagnosis of COVID-19 relies on consensus, meaning confirmation occurs only when both 3D U-Net and YOLOv4 are in agreement as shown in the final fiagram of YOLO and 3D U-Net integration at FADCIL prediction module shown in the following figure.
+Visibilia offers a commercial version of FADCIL, enhanced for clinical use. It adds a low refusal rate, high-speed processing, DICOM structured report files and secure integration with existing clinical platforms. Learn more on the [FADCIL product page](https://visibilia.net.br/fadcil).
 
+<p align="center">
+  <a href="https://visibilia.net.br/fadcil"><img src="https://visibilia.net.br/wp-content/uploads/2020/11/fadcil-lung-covid19-visibilia-winner.png" width="480" alt="FADCIL commercial version"></a>
+</p>
 
-.. figure:: ./images/yolo-3dunet-integration-fadcil-visibilia.PNG
-   :alt: YOLOv4 and 3D U-net integration at FADCIL: YOLOv4 and 3D U-Net integration at FADCIL prediction module
-   :align: center
+<br>
 
+## ◆ Acknowledgments
 
-**User Interface Module**
+We thank the following institutions:
+[HCFMUSP](https://www.hc.fm.usp.br/hc/portal/) ·
+[InRad](https://inrad.hc.fm.usp.br/) ·
+[Inova HC](https://inovahc.hc.fm.usp.br/) ·
+[Instituto de Pesquisas Tecnológicas (IPT)](https://ipt.br/) ·
+[Instituto Tellus](https://tellus.org.br/) ·
+[IdeiaGov](https://www.saopaulo.sp.gov.br/tag/ideiagov/) ·
+[Secretaria de Desenvolvimento Econômico do Estado de São Paulo (SDE)](https://www.desenvolvimentoeconomico.sp.gov.br/) ·
+[AWS](https://aws.amazon.com/pt/health/healthtech/) ·
+Fondo de Apoyo a Publicaciones (FAP) from [Tecnológico de Monterrey](https://tec.mx/en/research) ·
+[Inter-American Development Bank (IDB)](https://www.iadb.org/es/proyecto/BR-T1457)
 
+<br>
 
-FADCIL does not have its own user interface (UI) but enables integration with PACS (Picture Archiving and Communication System) or other CT scan visualization systems via the FADCIL API. Thus, segmentation results are saved in new scans, while classification and meta-information are stored in structured report (SR) files.
+## ◆ Citation
 
+<div align="center">
 
+<a href="https://ieeexplore.ieee.org/document/10600915"><img src="https://img.shields.io/badge/Read_the_paper-IEEE_Xplore-1F6FEB?style=for-the-badge&logo=ieee&logoColor=white" alt="Read the paper on IEEE Xplore"></a>
+<a href="https://www.researchgate.net/publication/381767923_Integrating_YOLO_and_3D_U-Net_for_COVID-19_Diagnosis_on_Chest_CT_Scans"><img src="https://img.shields.io/badge/Free_access-ResearchGate-555555?style=for-the-badge&logo=researchgate&logoColor=white" alt="Free access on ResearchGate"></a>
+<a href="https://doi.org/10.1109/CBMS61543.2024.00011"><img src="https://img.shields.io/badge/DOI-10.1109%2FCBMS61543.2024.00011-555555?style=for-the-badge&logo=doi&logoColor=white" alt="DOI"></a>
 
-
-**Feedback Module**
-
-Captures feedback from radiologists to refine and retrain the model, improving its accuracy over time. This is an optional module.
-
-
-
-
-
-
-Deep Learning Networks Training 
-==================================
-
-**YOLO configuration for processing 3D images**
-
-YOLO is adapted to process CT scans by treating the 3D image as a stack of multiple 2D slices. Thus, we employ three separate YOLOv4 networks, each dedicated to a specific plane of the human body: axial, coronal, and sagittal. This approach allows each YOLOv4 network to independently detect 2D bounding boxes, ensuring comprehensive coverage across different anatomical planes. The resulting bounding boxes are then consolidated through a process of region overlap, yielding unified 3D regions that identify COVID-19-related abnormalities.
-
-Our YOLO networks analyze all slices of CT scans at medium resolution. We employ the YOLOv4 implementation built upon the `DarkNet`_ framework to train for ~20 hours our YOLO networks until achieve the networks with best results, which are:
-
-- YoloV4-Axial network: with mAP of 0.714;
-- YoloV4-Coronal network: with mAP of 0.596;
-- YoloV4-Sagittal network: with mAP of 0.693.
-
-We note that all YOLOv4 networks can readily distinguish the lungs, as most slices contain at least one lung. However, the presence of COVID-19 is often undetected in many slices, resulting in the trained YOLOv4 networks being unable to discern lesions caused by COVID-19 by themselves. Thus, we merge the bounding boxes generated by the YOLOv4-Axial, YOLOv4-Coronal, and YOLOv4-Sagittal networks into a 3D reconstruction of volumes. Subsequently, we derived a unified and accurate probability for detecting COVID-19. Thus, two YOLOv4-3D networks are generated:
-
-- YOLOv4-3D weighted: formed by assigning 0.4, 0.22, and 0.38, as weights for YOLOv4-Axial, YOLOv4-Coronal, and YOLOv4-Sagittal networks, respectively;
-- YOLOv4-3D averaged: formed by assigning equal weights to the three networks.
-
-The two YOLOv4-3D networks allow the identification of lung regions where 2 or all 3 YOLOv4 networks agree on the outcome. This approach is highly effective in filtering out false positives due to the consensus of at least two YOLO networks. More details in our published paper (see here `publication`_).
-
-
-
-
-**3D U-Net configuration**
-
-By learning from annotations provided by human experts, which may vary, the 3D U-Net network can effectively capture intricate features within medical images. We utilize the 3D U-Net network to process both low and medium-resolution images. Due to the significant memory demands of the 3D U-Net, each scan is partitioned into patches. To handle border regions that extend beyond the CT scan, we employ mirroring techniques within the patches. Upon completion of the process, we combine all the patches to reconstruct the prediction to match the original CT scan size.
-
-To minimize the false positive rate, a perfect Dice score of 1 is required when both the neural network prediction and the reference mask indicate the absence of injuries caused by COVID-19. We utilized the 3D U-Net implementation from the Keras framework in Python to train two 3D-U-Net networks:
-
-- 3D U-Net only for COVID-19: network trained only with reference masks of COVID-19 cases;
-- 3D U-Net for other cases: network trained with reference masks of diseases other than COVID-19 as well as imaging findings like opacities.
-
-More details in our published paper.
-
-
-
-
-
-**Integrating YOLOv4 and 3D U-Net**
-
-After extensive testing, we determined the optimal combination of YOLO and 3D U-Net trained networks to obtain the following weights for our unified network configuration:
-
-- 64% for YOLOv4-3D weighted;
-- 24\% for YOLOv4-3D averaged;
-- 8\% for 3D U-Net only for COVID-19;
-- 4\% for 3D U-Net for other cases.
-
-Feature vectors, comprising lesion sizes and categorization results obtained from the unified configuration, are utilized to train an XGBoost classification model. On the other hand, the final segmentation model combines the two 3D U-Net networks.
-
-
-Running the Code
-=================
-
-To run the FADCIL code, you need to set up the appropriate programming environment. The source code is written in Python and R, and the necessary dependencies are listed in the following files:
-
-- **Python Dependencies**: `requirements.txt`
-- **R Dependencies**: `requirements-R.txt`
-
-### Steps to Run the Code:
-
-1. **Set Up Environment**:
-   - Install the required Python packages using: 
-     ```
-     pip install -r requirements.txt
-     ```
-   - Install the necessary R packages and other software as specified in `requirements-R.txt`.
-
-2. **Execute the Scripts**:
-   - **Segmentation**:
-     - Run `unet3D_keras_segmentation.py` to segment lungs and detect COVID-19 lesions from CT scans.
-   - **Classification**:
-     - Use `final-classification.R` to compute the probability of COVID-19 presence based on features extracted by the segmentation script.
-   - **Configuration**:
-     - Ensure `yolov4-covid_classification.cfg` is configured with the correct parameter values for the deep nets used in the segmentation script.
-
-### Expected Outputs:
-
-- **Binary Classification**: Outputs labeled with **1** (COVID-19) or **0** (not COVID-19), along with a probability score.
-- **Segmentation**: Binary mask indicating the positions of the lesions.
-
-### Additional Tasks:
-
-- **Input Reading**: Implement necessary code to read CT scans in formats like DICOM, NII, or NIfTI.
-- **Pre-processing**: Optionally, add code to clean or prepare the data according to specific requirements.
-- **Post-processing**: Optionally, adjust the results to match specific formats or specifications.
-- **Visualization**: Optionally, add code to visualize the results graphically.
-
-
-
-
-
-
-Awards
-========
-
-FADCIL was developed as part of the `Challenge nº 03/2020 <https://ideiagov.sp.gov.br/desafios/diagnostico-atraves-de-imagens-de-tomografia-computadorizada-e-raio-x-de-torax/>`_ launched by the São Paulo State Government, aimed at finding AI solutions to assist radiologists in diagnosing COVID-19 from CT and X-ray images. After rigorous evaluation, **Visibilia** was selected as the winner of this challenge. This recognition was officially published in the `Official Press of the Sao Paulo State Government <https://www.imprensaoficial.com.br/DO/BuscaDO2001Documento_11_4.aspx?link=%2f2020%2fexecutivo%2520secao%2520i%2fagosto%2f15%2fpag_0028_0f4ec73d9ce98efebbb9ba398e36dc0e.pdf&pagina=28&data=15/08/2020&caderno=Executivo%20I&paginaordenacao=100028>`_ on August 15, 2020.
-
-
-
-
-Videos
-========
-
-Watch FADCIL related video here:
-
-- `Overview of FADCIL <https://www.youtube.com/watch?v=5MC5czxMdQM&list=PLxCzFuDeosTlrlphQ8-oZyMpYCLmMy4bA&index=1>`_
-- `Paper presentation at CBMS 2024 by Dr. Jorge Valverde-Rebaza <https://event.fourwaves.com/cbms2024/abstracts/a7c37654-93f1-439b-a5de-77e8f47ba45b>`_
-
-
-
-
-
-
-
-Media Appearances
-==================
-
-FADCIL has been featured in various media outlets and publications:
-
-- `Visibilia Blog - FADCIL Overview <https://visibilia.net.br/category/fadcil/>`_
-
-
-
-
-
-
-Caution
-=========
-
-The results generated by FADCIL should not be used directly in clinical settings without appropriate validation and approval by medical professionals.
-
-
-Publication
-============
-See scientific publications related to FADCIL:
-
-- "Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans" at IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS 2024). Access via: IEExplore (final version) at `CBMS IEEExplore 2024 paper`_  and ResearchFate (free access) at `CBMS 2024 paper`_.
-
-
-Commercial Version
-==================
-Visibilia offers a commercial version of FADCIL, enhanced for clinical use. The commercial version includes additional features such as low refusal rate, high-speed processing, DICOM structured report files, and secure integration with existing clinical platforms.
-
-- For more information, visit our `FADCIL product page <https://visibilia.net.br/fadcil>`_.
-
-.. image:: https://visibilia.net.br/wp-content/uploads/2020/11/fadcil-lung-covid19-visibilia-winner.png
-   :width: 600px
-   :align: center
-
-
-
-
-Acknowledgment
-===============
-
-We thank the following institutions: `HCFMUSP`_, `InRad`_, `Inova HC`_, Intituto de Pesquisas Tecnológicas (`IPT`_), `Instituto Tellus`_, `IdeiaGov`_, Secretaria de Desenvolvimento Econômico do Estado de São Paulo (`SDE`_), `AWS`_, Fondo de Apoyo a Publicaciones (FAP) from `Tecnologico de Monterrey`_, and Inter-American Development Bank (`IDB`_).
-
-
-
-Citation
-=========
+</div>
 
 If you use FADCIL in your research, please cite our paper:
 
-.. code-block:: bibtex
+> Valverde-Rebaza, J., Andreis, G. R., Shiguihara, P., Paucar, S., Mano, L. Y., Góes, F., Noguez, J., & Da Silva, N. C. (2024). Integrating YOLO and 3D U-Net for COVID-19 diagnosis on chest CT scans. In *Proceedings of the IEEE 37th International Symposium on Computer-Based Medical Systems (CBMS 2024)* (pp. 15–20). IEEE. https://doi.org/10.1109/CBMS61543.2024.00011
 
-    @inproceedings{valverde:fadcil:cbms24,
-      title={Integrating YOLO and 3D U-Net for COVID-19 Diagnosis on Chest CT Scans},
-      author={Valverde-Rebaza, Jorge and Andreis, Guilherme R and Shiguihara, Pedro and Paucar, Sebastián and Mano, Leandro Y and Góes, Fabiana and Noguez, Julieta and Da Silva, Nathalia C},
-      booktitle={Proceedings of The IEEE 37th International Symposium on Computer-Based Medical Systems},
-      series = {CBMS 2024},
-      pages = {15--20},
-      year={2024},
-      doi = {10.1109/CBMS61543.2024.00011},
-      publisher={IEEE}
-    }
+```bibtex
+@inproceedings{valverde:fadcil:cbms24,
+  title     = {Integrating {YOLO} and {3D U-Net} for {COVID-19} Diagnosis on Chest {CT} Scans},
+  author    = {Valverde-Rebaza, Jorge and Andreis, Guilherme R. and Shiguihara, Pedro and Paucar, Sebasti{\'a}n and Mano, Leandro Y. and G{\'o}es, Fabiana and Noguez, Julieta and Da Silva, Nathalia C.},
+  booktitle = {Proceedings of the IEEE 37th International Symposium on Computer-Based Medical Systems},
+  series    = {CBMS 2024},
+  pages     = {15--20},
+  year      = {2024},
+  publisher = {IEEE},
+  doi       = {10.1109/CBMS61543.2024.00011},
+  url       = {https://ieeexplore.ieee.org/document/10600915}
+}
+```
 
+<br>
 
-.. _Visibilia: https://visibilia.net.br 
-.. _HCFMUSP: https://www.hc.fm.usp.br/hc/portal/
-.. _DarkNet: https://github.com/AlexeyAB/darknet
-.. _InRad: https://inrad.hc.fm.usp.br/
-.. _Inova HC: https://inovahc.hc.fm.usp.br/
-.. _IPT: https://ipt.br/
-.. _Instituto Tellus: https://tellus.org.br/
-.. _IdeiaGov: https://www.saopaulo.sp.gov.br/tag/ideiagov/
-.. _SDE: https://www.desenvolvimentoeconomico.sp.gov.br/
-.. _AWS: https://aws.amazon.com/pt/health/healthtech/
-.. _Tecnologico de Monterrey: https://tec.mx/en/research
-.. _IDB: https://www.iadb.org/es/proyecto/BR-T1457
-.. _CBMS 2024 paper: https://www.researchgate.net/publication/381767923_Integrating_YOLO_and_3D_U-Net_for_COVID-19_Diagnosis_on_Chest_CT_Scans
-.. _CBMS IEEExplore 2024 paper: https://ieeexplore.ieee.org/document/10600915
+---
+
+<div align="center">
+<sub>
+Copyright (C) 2020-2024 <a href="https://visibilia.net.br">Visibilia</a> · Code released under the <a href="LICENSE">MIT License</a><br>
+FADCIL is a product of Visibilia Ltda.
+</sub>
+</div>
